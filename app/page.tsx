@@ -1,48 +1,44 @@
+import Image from "next/image";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 py-20 overflow-hidden">
-        {/* Background Image Placeholder */}
+      <section className="relative min-h-screen flex flex-col px-4 py-20 overflow-hidden">
+        {/* Background */}
         <div className="absolute inset-0 z-0">
-          <div className="w-full h-full bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900">
-            <div className="absolute inset-0 bg-gradient-to-br from-yellow-200/20 via-orange-200/20 to-yellow-200/20"></div>
-            <div className="absolute inset-0 flex items-center justify-center opacity-20">
-              <div className="text-center text-white/30">
-                <svg className="w-64 h-64" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                </svg>
-              </div>
-            </div>
-          </div>
+        <Image
+            src="/hero2.png"
+            alt="Background"
+            fill
+            className="object-cover"
+          priority
+        />
+          <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Logo */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 mb-8">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-pink-300 rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2c-2.2 0-4 1.8-4 4 0 1.1.45 2.1 1.18 2.82L8 10c-1.1 0-2 .9-2 2s.9 2 2 2h8c1.1 0 2-.9 2-2s-.9-2-2-2l-.82-1.18C15.55 8.1 16 7.1 16 6c0-2.2-1.8-4-4-4zm0 2c1.1 0 2 .9 2 2s-.9 2-2 2-2-.9-2-2 .9-2 2-2z"/>
-                <ellipse cx="8" cy="14" rx="2" ry="3"/>
-                <ellipse cx="16" cy="14" rx="2" ry="3"/>
-                <path d="M12 12c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2s2-.9 2-2v-2c0-1.1-.9-2-2-2z"/>
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white text-xl font-bold">Aldeia</span>
-              <span className="text-white text-xl font-bold">Singular</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Main Content */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-6 leading-tight">
-            A JORNADA PARENTAL NAS ALTAS HABILIDADES E SUPERDOTAÇÃO NÃO PRECISA SER SOLITÁRIA.
+        {/* Main Content - Two Columns */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex-1 flex items-center pt-8">
+          <div className="grid md:grid-cols-2 gap-12 items-center w-full">
+            {/* Left Column - Headline */}
+            <div className="text-left">
+              <Image
+                src="/logo.png"
+                alt="Aldeia Singular"
+                width={200}
+                height={60}
+                priority
+                className="h-auto mb-4"
+              />
+              <h1 className="text-2xl md:text-5xl lg:text-5xl font-bold text-[#ffffff] mb-6 leading-tight">
+              A jornada com um filho de Altas Habilidades não precisa ser solitária.
           </h1>
-          <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto leading-relaxed">
-            Junte-se a uma comunidade acolhedora de pais que entendem os desafios únicos de criar filhos com altas habilidades. Encontre apoio, recursos e conexões que transformarão sua jornada.
-          </p>
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                Junte-se a uma comunidade acolhedora de pais que entendem os desafios únicos de criar filhos com altas habilidades. Encontre apoio, recursos e conexões que transformarão sua jornada.
+              </p>
+            </div>
+
+          </div>
         </div>
       </section>
 
@@ -415,16 +411,14 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {/* Left Column */}
             <div>
-              <div className="flex items-center gap-2 mb-6">
-            <div className="w-10 h-10 bg-pink-300 rounded-full flex items-center justify-center">
-              <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M12 2c-1.1 0-2 .9-2 2v2c0 .55-.45 1-1 1H7c-.55 0-1 .45-1 1v2c0 .55.45 1 1 1h2c.55 0 1-.45 1-1V6c0-.55.45-1 1-1s1 .45 1 1v4c0 .55.45 1 1 1h2c.55 0 1-.45 1-1V8c0-.55-.45-1-1-1h-2c-.55 0-1-.45-1-1V4c0-1.1-.9-2-2-2zm-4 12c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2H8zm8 0c-1.1 0-2 .9-2 2v2c0 1.1.9 2 2 2h2c1.1 0 2-.9 2-2v-2c0-1.1-.9-2-2-2h-2z"/>
-              </svg>
-            </div>
-                <div className="flex flex-col">
-                  <span className="text-xl font-bold">Aldeia</span>
-                  <span className="text-xl font-bold">Singular</span>
-                </div>
+              <div className="mb-6">
+            <Image
+                  src="/logo.png"
+                  alt="Aldeia Singular"
+                  width={180}
+                  height={54}
+                  className="h-auto"
+                />
               </div>
               <p className="text-gray-300 mb-6">
                 © 2024 Aldeia Singular. Todos os direitos reservados.
