@@ -1,14 +1,18 @@
 import Image from "next/image";
+import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
+import { Marquee } from "./components/marquee";
 
 export default function Home() {
+  const depoimentos = Array.from({ length: 10 }, (_, i) => i + 1);
+
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-[#f7f1f2]">
       {/* Hero Section */}
       <section className="relative min-h-screen flex flex-col px-4 py-20 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0">
         <Image
-            src="/hero2.png"
+            src="/hero.png"
             alt="Background"
             fill
             className="object-cover"
@@ -43,22 +47,24 @@ export default function Home() {
       </section>
 
       {/* Introduction Section */}
-      <section className="py-20 px-4 bg-[#f5f5f5]">
+      <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          {/* Image Placeholder */}
-          <div className="relative rounded-2xl overflow-hidden aspect-[3/4] bg-gradient-to-br from-purple-200 to-pink-200 flex items-center justify-center">
-            <div className="text-center text-gray-500">
-              <svg className="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-              </svg>
-              <p className="text-sm">Imagem: Criança sorrindo</p>
+          {/* Image */}
+          <div className="relative rounded-2xl overflow-hidden aspect-[3/4] p-4">
+            <div className="relative w-full h-full">
+              <Image
+                src="/segundadobra.png"
+                alt="Criança sorrindo"
+                fill
+                className="object-contain"
+              />
             </div>
           </div>
 
           {/* Text Content */}
           <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900">
-              PARA QUE SEUS FILHOS BRILHEM, VOCÊ PRECISA ESTAR FORTE.
+            <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167]">
+              PARA QUE SEU FILHO BRILHE, VOCÊ PRECISA ESTAR FORTE.
             </h2>
             <p className="text-lg text-gray-700 leading-relaxed">
               Criar filhos com altas habilidades e superdotação é uma jornada única, cheia de desafios e oportunidades. Muitas vezes, os pais se sentem isolados, sem saber onde encontrar apoio ou como navegar pelos desafios específicos dessa realidade.
@@ -66,111 +72,156 @@ export default function Home() {
             <p className="text-lg text-gray-700 leading-relaxed">
               Na Aldeia Singular, você encontra uma comunidade acolhedora que entende suas necessidades e oferece recursos práticos, suporte emocional e conexões significativas com outros pais que compartilham experiências similares.
             </p>
-            <button className="bg-[#FF7F7F] hover:bg-[#FF6B6B] text-white font-semibold py-4 px-8 rounded-full text-lg transition-colors shadow-lg">
+            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO FAZER PARTE DA COMUNIDADE
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Comparison Section */}
-      <section className="py-20 px-4 bg-[#4A148C]">
+      <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
+          <div className="grid md:grid-cols-2 border-4 border-[#FF7167] rounded-3xl overflow-hidden mb-12">
             {/* Left Card - Problems */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Se você se sente...</h3>
+            <div className="bg-[#450655] p-8 border-r-4 border-[#FF7167]">
+              <h3 className="text-3xl md:text-5xl font-bold text-white mb-2 text-center">Se você se sente...</h3>
+              <div className="flex justify-center mb-6">
+                <Image 
+                  src="/sublinhado.png" 
+                  alt="" 
+                  width={500} 
+                  height={8}
+                  className="h-auto"
+                />
+              </div>
               <ul className="space-y-4">
                 {[
-                  "Isolado e sem compreensão",
-                  "Inseguro sobre como apoiar seu filho",
-                  "Sobrecarregado com informações contraditórias",
-                  "Sem recursos práticos para o dia a dia",
-                  "Preocupado com o futuro do seu filho"
+                  "...angustiada(o) com a intensidade emocional e a hipersensibilidade do seu filho, sem saber como agir ou acalmar.",
+                  "...esgotada(o) de lutar com a escola, que rotula seu filho como \"birrento\", \"desatento\" ou \"antissocial\".",
+                  "...perdida(o) e sobrecarregada(a) com o excesso de informações duvidosas e a dificuldade de encontrar profissionais confiáveis.",
+                  "Com medo de ver o potencial brilhante do seu filho se transformar em frustração, tristeza ou apatia.",
+                  "Completamente sozinha(o), mesmo rodeada(o) de pessoas, por ninguém entender o que você realmente passa."
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <svg className="w-6 h-6 text-red-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                    <span className="text-gray-700 text-lg">{item}</span>
+                    <Image 
+                      src="/nocheck.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="flex-shrink-0 mt-1"
+                    />
+                    <span className="text-white text-lg">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
             {/* Right Card - Solutions */}
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">Na Aldeia você...</h3>
+            <div className="bg-[#450655] p-8">
+              <h3 className="text-3xl md:text-5xl font-bold text-[#FF7167] mb-2 text-center">Na Aldeia você...</h3>
+              <div className="flex justify-center mb-6">
+                <Image 
+                  src="/sublinhado.png" 
+                  alt="" 
+                  width={500} 
+                  height={8}
+                  className="h-auto"
+                />
+              </div>
               <ul className="space-y-4">
                 {[
-                  "Encontra uma comunidade acolhedora e compreensiva",
-                  "Recebe ferramentas práticas e orientações especializadas",
-                  "Acessa conteúdo confiável e atualizado",
-                  "Conecta-se com outros pais em situações similares",
-                  "Ganha confiança e tranquilidade para apoiar seu filho"
+                  "...encontra aulas, trilhas e encontros ao vivo com a Dra. Angela para decodificar essa intensidade, transformando o que parecia \"difícil\" em potência e conexão.",
+                  "...ganha ferramentas e guias práticos para \"falar a língua\" da escola, sabendo escolher o ambiente, exatamente o que pedir e como construir uma parceria que funcione.",
+                  "...encontra um caminho seguro, um acervo de conhecimento validado por uma das maiores especialistas do Brasil e uma rede de profissionais indicados pela comunidade.",
+                  "...aprende a nutrir a singularidade dele, ganhando confiança para tomar as decisões certas que garantem um futuro saudável e feliz.",
+                  "...encontra sua tribo. Um acolhimento imediato na nossa comunidade 24/7, onde você é compreendida antes mesmo de terminar de falar."
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-3">
-                    <svg className="w-6 h-6 text-green-500 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                    <span className="text-gray-700 text-lg">{item}</span>
+                    <Image 
+                      src="/check.png" 
+                      alt="" 
+                      width={24} 
+                      height={24} 
+                      className="flex-shrink-0 mt-1"
+                    />
+                    <span className="text-white text-lg">{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
           </div>
           <div className="text-center">
-            <button className="bg-[#FF7F7F] hover:bg-[#FF6B6B] text-white font-semibold py-4 px-8 rounded-full text-lg transition-colors shadow-lg">
+            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-4 rounded-xl text-2xl transition-colors shadow-lg border-2 border-white inline-block">
               QUERO ESSA TRANSFORMAÇÃO
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
+      {/* Testimonials Section Title */}
+      <div className="max-w-7xl mx-auto px-4 py-12">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+          O que acontece quando você<br />
+          finalmente <span className="text-[#FF7167]">encontra sua tribo...</span>
+        </h2>
+      </div>
+
       {/* Testimonials Section */}
-      <section className="py-20 px-4 bg-[#FFF0F5] relative overflow-hidden">
-        {/* Decorative bubbles */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-purple-300"></div>
-          <div className="absolute top-40 right-20 w-24 h-24 rounded-full bg-pink-300"></div>
-          <div className="absolute bottom-20 left-1/4 w-40 h-40 rounded-full bg-purple-200"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
-            O que acontece quando você finalmente encontra sua tribo...
-          </h2>
-          
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[1, 2, 3, 4, 5, 6].map((item) => (
-              <div key={item} className="bg-gray-900 rounded-2xl p-6 shadow-lg">
-                <div className="flex items-center gap-1 mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-white mb-4 leading-relaxed">
-                  "A Aldeia Singular mudou completamente minha perspectiva. Finalmente encontrei pessoas que entendem os desafios únicos de criar uma criança com altas habilidades. A comunidade é incrível!"
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center">
-                    <span className="text-white font-semibold">M</span>
+      <section 
+        className="py-28 px-0 relative"
+        style={{
+          backgroundImage: 'url(/pattern.png)',
+          backgroundSize: 'contain',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat'
+        }}
+      >
+        <div className="w-full relative z-10">
+          <div className="relative w-full">
+            {/* Blur nas laterais */}
+            <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-[#FFF0F5] via-[#FFF0F5]/60 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-[#FFF0F5] via-[#FFF0F5]/60 to-transparent z-10 pointer-events-none"></div>
+            
+            {/* Primeira linha - 5 primeiros depoimentos - entra da esquerda */}
+            <div className="mb-8 w-full">
+              <Marquee pauseOnHover className="[--duration:40s] w-full" reverse={false}>
+                {depoimentos.slice(0, 5).map((num) => (
+                  <div key={num} className="flex-shrink-0 mx-4">
+                    <Image
+                      src={`/depoimentos/Editados/${num}.png`}
+                      alt={`Depoimento ${num}`}
+                      width={400}
+                      height={300}
+                      className="rounded-2xl object-cover h-auto w-auto max-w-[400px]"
+                    />
                   </div>
-                  <div>
-                    <p className="text-white font-semibold">Maria Silva</p>
-                    <p className="text-gray-400 text-sm">Mãe de João, 8 anos</p>
+                ))}
+              </Marquee>
+            </div>
+            
+            {/* Segunda linha - 5 últimos depoimentos - entra da direita */}
+            <div className="w-full">
+              <Marquee pauseOnHover className="[--duration:40s] w-full" reverse={true}>
+                {depoimentos.slice(5, 10).map((num) => (
+                  <div key={num} className="flex-shrink-0 mx-4">
+                    <Image
+                      src={`/depoimentos/Editados/${num}.png`}
+                      alt={`Depoimento ${num}`}
+                      width={400}
+                      height={300}
+                      className="rounded-2xl object-cover h-auto w-auto max-w-[400px]"
+                    />
                   </div>
-                </div>
-              </div>
-            ))}
+                ))}
+              </Marquee>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Platform Overview Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4">
             O que tem dentro da Aldeia?
@@ -179,130 +230,183 @@ export default function Home() {
           <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
             Uma plataforma exclusiva criada especialmente para apoiar pais na jornada de criar filhos com altas habilidades e superdotação.
           </p>
+        </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Image Placeholder */}
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-purple-100 to-pink-100 aspect-video flex items-center justify-center">
-              <div className="text-center text-gray-500">
-                <svg className="w-32 h-32 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-                <p className="text-sm">Plataforma Desktop e Mobile</p>
+        {/* Plataforma Autoral Exclusiva - Full Width Orange Section */}
+        <div className="w-full bg-[#FF7167] relative overflow-visible py-20 md:py-10">
+          <div className="max-w-7xl mx-auto px-4">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              {/* Image */}
+              <div className="relative rounded-2xl overflow-visible aspect-video bg-transparent -my-8 md:-my-12">
+                <Image
+                  src="/mockup.png"
+                  alt="Plataforma Desktop e Mobile"
+                  fill
+                  className="object-contain scale-160"
+                />
               </div>
-            </div>
 
-            {/* Text Content */}
-            <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-gray-900">Plataforma Autoral Exclusiva</h3>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Acesse uma plataforma desenvolvida especialmente para a comunidade Aldeia Singular, com recursos intuitivos e conteúdo exclusivo criado por especialistas em altas habilidades e superdotação.
-              </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                Navegue por trilhas de conhecimento estruturadas, participe de encontros ao vivo com especialistas e acesse uma biblioteca completa de recursos práticos para o dia a dia.
-              </p>
+              {/* Text Content */}
+              <div className="space-y-6">
+                <h3 className="text-3xl font-bold text-[#450655]">Plataforma Autoral Exclusiva</h3>
+                <p className="text-lg text-white leading-relaxed">
+                Cansados de portais de cursos genéricos, construímos a plataforma da Aldeia Singular do zero.
+                O resultado é um ecossistema pensado para cada detalhe da sua jornada, unindo o conhecimento profundo da Dra. Ângela Virgolim com a organização e a facilidade que você merece.                </p>
+                <p className="text-lg text-white leading-relaxed">
+                Chega de se sentir perdido(a) em um mar de informações soltas ou em grupos de WhatsApp onde o conteúdo se perde.                </p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Intuitive Navigation Section */}
-      <section className="py-20 px-4 bg-[#f5f5f5]">
+      <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
-            Você encontra tudo de forma intuitiva em um só lugar:
+          <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167] text-center mb-12">
+            Você encontra tudo de forma<br />
+            intuitiva em um só lugar:
           </h2>
 
           <div className="grid md:grid-cols-3 gap-8 mb-12">
             {/* Card 1 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                </svg>
+            <div className="relative rounded-4xl p-8 shadow-lg border-4 border-[#FF7167] overflow-hidden">
+              <Image
+                src="/montanha.jpg"
+                alt=""
+                fill
+                className="object-cover scale-110"
+              />
+              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="relative z-10 text-center">
+                <div className="mb-4 flex justify-center">
+                  <Image
+                    src="/icones/montanha_icone.png"
+                    alt=""
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
+                <h3 className="text-3xl font-bold text-[#FF7167] mb-4">
+                  Trilhas de:<br />
+                  Conhecimento
+                </h3>
+                <p className="text-white leading-relaxed">
+                  Participe dos encontros ao vivo<br />
+                  ou assista às gravações que<br />
+                  ajudam você a entender o que<br />
+                  são Altas Habilidades e Superdotação,<br />
+                  compreender melhor o seu filho e se<br />
+                  fortalecer como mãe ou pai.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Trilhas de Conhecimento</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Conteúdo estruturado e organizado em trilhas temáticas que guiam você através dos principais tópicos relacionados às altas habilidades e superdotação.
-              </p>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-pink-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-pink-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                </svg>
+            <div className="relative rounded-4xl p-8 shadow-lg border-4 border-[#FF7167] overflow-hidden">
+              <Image
+                src="/rodas.jpg"
+                alt=""
+                fill
+                className="object-cover scale-110"
+              />
+              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="relative z-10 text-center">
+                <div className="mb-4 flex justify-center">
+                  <Image
+                    src="/icones/rodas_icone.png"
+                    alt=""
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
+                <h3 className="text-3xl font-bold text-[#FF7167] mb-4">
+                  Entrevistas com:<br />
+                  especialistas
+                </h3>
+                <p className="text-white leading-relaxed">
+                  A Dra. Angela convida mensalmente<br />
+                  especialistas para conversas ao<br />
+                  vivo sobre temas como identificação,<br />
+                  escola, convivência, autocuidado e o<br />
+                  papel da família.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Encontros com especialistas</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Participe de encontros mensais ao vivo com especialistas renomados em altas habilidades, com espaço para perguntas e interação direta.
-              </p>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-2xl p-8 shadow-lg">
-              <div className="w-16 h-16 bg-purple-100 rounded-full flex items-center justify-center mb-6">
-                <svg className="w-8 h-8 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
+            <div className="relative rounded-4xl p-8 shadow-lg border-4 border-[#FF7167] overflow-hidden">
+              <Image
+                src="/plantao.jpg"
+                alt=""
+                fill
+                className="object-cover scale-110"
+              />
+              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="relative z-10 text-center">
+                <div className="mb-4 flex justify-center">
+                  <Image
+                    src="/icones/plantao_icone.png"
+                    alt=""
+                    width={80}
+                    height={80}
+                    className="h-20 w-20 object-contain"
+                  />
+                </div>
+                <h3 className="text-3xl font-bold text-[#FF7167] mb-4">
+                  Plantões de:<br />
+                  Dúvidas
+                </h3>
+                <p className="text-white leading-relaxed">
+                  Duas vezes por mês, encontros<br />
+                  coletivos com especialistas para<br />
+                  responder dúvidas reais<br />
+                  dos membros.
+                </p>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-4">Moradas de Ouvidos</h3>
-              <p className="text-gray-700 leading-relaxed">
-                Um espaço acolhedor de escuta e compartilhamento, onde você pode expressar suas dúvidas, preocupações e experiências em um ambiente seguro e compreensivo.
-              </p>
             </div>
           </div>
 
           <div className="text-center">
-            <button className="bg-[#FF7F7F] hover:bg-[#FF6B6B] text-white font-semibold py-4 px-8 rounded-full text-lg transition-colors shadow-lg">
+            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO ACESSAR A PLATAFORMA
-            </button>
+            </a>
           </div>
         </div>
       </section>
 
       {/* Meet the Guide Section */}
-      <section className="py-20 px-4 bg-white">
+      <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
             Quem vai te guiar nessa jornada?
           </h2>
-          <p className="text-xl text-gray-600 mb-12">Conheça a Dra. Angela Virgolim</p>
+          <p className="text-2xl md:text-4xl font-bold text-[#FF7167] mb-12">Conheça a Dra. Angela Virgolim</p>
 
           <div className="max-w-4xl mx-auto">
-            <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-purple-200 to-pink-200 aspect-video flex items-center justify-center">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="w-20 h-20 bg-white/90 rounded-full flex items-center justify-center cursor-pointer hover:bg-white transition-colors">
-                  <svg className="w-10 h-10 text-purple-600 ml-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
-                  </svg>
-                </div>
-              </div>
-              <div className="absolute bottom-8 left-8 text-left">
-                <p className="text-2xl font-bold text-gray-900">PRAZER, ANGELA VIRGOLIM</p>
-              </div>
-              <div className="text-center text-gray-500">
-                <svg className="w-32 h-32 mx-auto mb-4 opacity-50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                </svg>
-                <p className="text-sm">Vídeo: Apresentação da Dra. Angela Virgolim</p>
-              </div>
-            </div>
+            <HeroVideoDialog
+              videoSrc="https://player.vimeo.com/video/1135528791?autoplay=1"
+              thumbnailSrc="/thumb.jpg"
+              thumbnailAlt="Apresentação da Dra. Angela Virgolim"
+              animationStyle="from-center"
+            />
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="py-20 px-4 bg-[#f5f5f5]">
+      <section id="precos" className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
             Quanto tenho que investir para fazer parte da Aldeia?
           </h2>
 
-          <div className="max-w-5xl mx-auto bg-white rounded-2xl shadow-2xl overflow-hidden">
+          <div className="max-w-5xl mx-auto bg-[#f7f1f2] rounded-2xl shadow-2xl overflow-hidden">
             <div className="grid md:grid-cols-2">
               {/* Left Column - Benefits */}
-              <div className="bg-gradient-to-br from-purple-600 to-purple-800 p-8 md:p-12 text-white">
+              <div className="bg-gradient-to-br from-[#450655] to-[#450655] p-8 md:p-12 text-white">
                 <h3 className="text-2xl font-bold mb-6">ACOLHER É O PRIMEIRO PASSO PARA TRANSFORMAR</h3>
                 <ul className="space-y-4">
                   {[
@@ -325,7 +429,7 @@ export default function Home() {
               </div>
 
               {/* Right Column - Price */}
-              <div className="p-8 md:p-12 flex flex-col items-center justify-center bg-white">
+              <div className="p-8 md:p-12 flex flex-col items-center justify-center bg-[#f7f1f2]">
                 <div className="w-20 h-20 bg-pink-200 rounded-full flex items-center justify-center mb-6">
                   <svg className="w-10 h-10 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
                     <path d="M10 2L2 7l8 5 8-5-8-5zM2 17l8 5 8-5M2 12l8 5 8-5" />
@@ -335,9 +439,9 @@ export default function Home() {
                   <p className="text-5xl font-bold text-gray-900 mb-2">12x de R$ 98,00</p>
                   <p className="text-xl text-gray-600">ou R$ 947,00 à vista</p>
                 </div>
-                <button className="bg-[#FF7F7F] hover:bg-[#FF6B6B] text-white font-semibold py-4 px-8 rounded-full text-lg transition-colors w-full max-w-xs shadow-lg">
+                <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors w-full max-w-xs shadow-lg border-2 border-white inline-block text-center">
                   QUERO ENTRAR PARA A ALDEIA SINGULAR
-                </button>
+                </a>
               </div>
             </div>
           </div>
@@ -345,33 +449,46 @@ export default function Home() {
       </section>
 
       {/* Investment Philosophy Section */}
-      <section className="py-20 px-4 bg-white">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-            VOCÊ NÃO ESTÁ INVESTINDO NA COMUNIDADE...
-          </h2>
-          <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-            Você está investindo no futuro do seu filho, na sua tranquilidade como pai ou mãe, e na conexão com uma rede de apoio que realmente entende sua jornada única.
-          </p>
-          <div className="grid md:grid-cols-3 gap-6 mb-8">
-            <div className="bg-purple-50 rounded-xl p-6">
-              <p className="text-2xl font-bold text-purple-900">Mais Paz</p>
+      <section className="py-20 px-4 bg-[#f7f1f2]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            {/* Left Column - Text Content */}
+            <div className="text-left">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167] mb-6 uppercase">
+                VOCÊ NÃO ESTÁ INVESTINDO NA COMUNIDADE...
+              </h2>
+              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
+                Está investindo no seu bem-estar, da sua família. No futuro do seu filho, na tranquilidade da sua casa. Pois esse é o lema da nossa comunidade:
+              </p>
+              <div className="space-y-2 text-xl md:text-2xl">
+                <p>
+                  <span className="font-bold text-[#FFA500]">Acolher</span>
+                  <span className="text-gray-700"> Pais.</span>
+                </p>
+                <p>
+                  <span className="font-bold text-[#FFA500]">Compreender</span>
+                  <span className="text-gray-700"> Filhos.</span>
+                </p>
+                <p>
+                  <span className="font-bold text-[#FFA500]">Fortalecer</span>
+                  <span className="text-gray-700"> lares</span>
+                </p>
+              </div>
             </div>
-            <div className="bg-pink-50 rounded-xl p-6">
-              <p className="text-2xl font-bold text-pink-900">Filhos Felizes</p>
-            </div>
-            <div className="bg-purple-50 rounded-xl p-6">
-              <p className="text-2xl font-bold text-purple-900">Conexão Geral</p>
+
+            {/* Right Column - CTA Button */}
+            <div className="flex justify-center md:justify-end">
+              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-8 px-12 rounded-2xl text-2xl md:text-3xl transition-colors shadow-lg border-2 border-white inline-block text-center">
+                QUERO ENTRAR PARA<br />
+                A ALDEIA SINGULAR
+              </a>
             </div>
           </div>
-          <button className="bg-[#FF7F7F] hover:bg-[#FF6B6B] text-white font-semibold py-4 px-8 rounded-full text-lg transition-colors shadow-lg">
-            QUERO ENTRAR PARA A ALDEIA SINGULAR
-          </button>
         </div>
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 px-4 bg-[#f5f5f5]">
+      <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
             Dúvidas frequentes
@@ -386,10 +503,10 @@ export default function Home() {
               "Há suporte técnico disponível?",
               "Como posso interagir com outros pais na comunidade?"
             ].map((question, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-md cursor-pointer hover:shadow-lg transition-shadow">
+              <div key={index} className="bg-[#f7f1f2] rounded-xl p-6 shadow-md cursor-pointer hover:shadow-lg transition-shadow border-2 border-[#FF7167]">
                 <div className="flex items-center justify-between">
                   <p className="text-lg font-semibold text-gray-900">{question}</p>
-                  <svg className="w-6 h-6 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg className="w-6 h-6 text-[#FF7167]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                   </svg>
                 </div>
@@ -398,7 +515,7 @@ export default function Home() {
           </div>
 
           <div className="text-center mt-8">
-            <a href="#" className="text-purple-600 hover:text-purple-700 font-semibold">
+            <a href="#" className="text-[#450655] hover:text-[#450655]/80 font-semibold">
               Ver mais perguntas
             </a>
           </div>
@@ -406,68 +523,29 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-[#4A148C] text-white py-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            {/* Left Column */}
-            <div>
-              <div className="mb-6">
+      <footer className="bg-gradient-to-br from-[#450655] to-[#6B1A7F] text-white py-16 px-4">
+        <div className="max-w-7xl mx-auto text-center">
+          <div className="mb-6 flex justify-center">
             <Image
-                  src="/logo.png"
-                  alt="Aldeia Singular"
-                  width={180}
-                  height={54}
-                  className="h-auto"
-                />
-              </div>
-              <p className="text-gray-300 mb-6">
-                © 2024 Aldeia Singular. Todos os direitos reservados.
-              </p>
-              <div className="flex flex-col gap-3">
-                <button className="bg-[#FF7F7F] hover:bg-[#FF6B6B] text-white font-semibold py-3 px-6 rounded-full transition-colors text-left shadow-lg">
-                  Entrar na Aldeia Singular
-                </button>
-                <button className="border-2 border-white hover:bg-white/10 text-white font-semibold py-3 px-6 rounded-full transition-colors text-left">
-                  Download
-                </button>
-              </div>
-            </div>
-
-            {/* Middle Column */}
-            <div>
-              <h4 className="text-xl font-bold mb-6">Links Rápidos</h4>
-              <ul className="space-y-3">
-                {["Home", "Sobre Nós", "Contato", "Termos de Uso", "Política de Privacidade"].map((link) => (
-                  <li key={link}>
-                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                      {link}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Right Column */}
-            <div>
-              <h4 className="text-xl font-bold mb-6">Redes Sociais</h4>
-              <div className="flex gap-4">
-                <a href="#" className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                  </svg>
-                </a>
-                <a href="#" className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
-                  </svg>
-                </a>
-                <a href="#" className="w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center transition-colors">
-                  <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                  </svg>
-                </a>
-              </div>
-            </div>
+              src="/logo.png"
+              alt="Aldeia Singular"
+              width={180}
+              height={54}
+              className="h-auto"
+            />
+          </div>
+          <p className="text-white/80 mb-8">
+            © 2024 Aldeia Singular. Todos os direitos reservados.
+          </p>
+          
+          {/* Subrodapé */}
+          <div className="border-t border-white/20 pt-8 space-y-4">
+            <p className="text-white/80 text-sm max-w-3xl mx-auto">
+              A Aldeia Singular não substitui as avaliações para identificação de Altas Habilidades e Superdotação e outras Neurodivergências. Somos uma comunidade de mães e pais de filhos de AHSD, que buscam desenvolvimento pessoal, educação parental e bem-estar.
+            </p>
+            <p className="text-white font-bold">
+              Desenvolvido por COEXPERTS
+            </p>
           </div>
         </div>
       </footer>
