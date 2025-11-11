@@ -6,7 +6,7 @@ export default function Home() {
   const depoimentos = Array.from({ length: 10 }, (_, i) => i + 1);
 
   return (
-    <div className="min-h-screen bg-[#f7f1f2]">
+    <div className="min-h-screen bg-[#f7f1f2] overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[300px] md:h-[90vh] md:min-h-[600px] flex flex-col px-4 py-6 md:py-12 md:py-20 overflow-hidden">
         {/* Background - Mobile */}
@@ -33,7 +33,7 @@ export default function Home() {
         </div>
         
         {/* Main Content - Two Columns */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex-1 flex items-start md:items-center pt-8 md:pt-8">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex-1 flex items-start md:items-center pt-8 md:pt-8 overflow-x-hidden">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
             {/* Left Column - Headline */}
             <div className="text-left">
@@ -64,8 +64,8 @@ export default function Home() {
       <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
           {/* Image */}
-          <div className="relative rounded-2xl overflow-visible aspect-[3/4] p-0 md:p-4 order-1 md:order-1">
-            <div className="relative w-full h-full scale-110 md:scale-100">
+          <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-[3/4] p-0 md:p-4 order-1 md:order-1">
+            <div className="relative w-full h-full scale-100 md:scale-100">
               <Image
                 src="/segundadobra.png"
                 alt="Criança sorrindo"
@@ -99,7 +99,7 @@ export default function Home() {
             </p>
             <div className="flex justify-center md:justify-end">
               <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-lg transition-colors shadow-lg border-2 border-white inline-block">
-                QUERO FAZER PARTE DA COMUNIDADE
+              QUERO FAZER PARTE DA COMUNIDADE
               </a>
             </div>
           </div>
@@ -242,7 +242,7 @@ export default function Home() {
                   </div>
                 ))}
               </Marquee>
-            </div>
+              </div>
           </div>
         </div>
       </section>
@@ -260,20 +260,20 @@ export default function Home() {
         </div>
 
         {/* Plataforma Autoral Exclusiva - Full Width Orange Section */}
-        <div className="w-full bg-[#FF7167] relative overflow-visible py-12 md:py-20 lg:py-10">
+        <div className="w-screen bg-[#FF7167] relative overflow-hidden md:overflow-visible py-12 md:py-20 lg:py-10 -mx-4 md:mx-0">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
               {/* Image */}
-              <div className="relative rounded-2xl overflow-visible aspect-video bg-transparent -mt-18 md:-my-8 lg:-my-12 order-1 md:order-1">
+              <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-video bg-transparent -mt-12 md:-my-8 lg:-my-12 order-1 md:order-1">
                 <Image
                   src="/mockup.png"
                   alt="Plataforma Desktop e Mobile"
                   fill
-                  className="object-contain scale-150 md:scale-160"
+                  className="object-contain scale-125 md:scale-160"
                 />
-              </div>
+            </div>
 
-              {/* Text Content */}
+            {/* Text Content */}
               <div className="space-y-4 md:space-y-6 order-2 md:order-2 text-center md:text-left">
                 <h3 className="text-2xl md:text-3xl font-bold text-[#450655]">Plataforma Autoral Exclusiva</h3>
                 <p className="text-base md:text-lg text-white leading-relaxed">
@@ -435,7 +435,7 @@ export default function Home() {
             <div className="grid md:grid-cols-2">
               {/* Left Column - Benefits */}
               <div className="bg-white pb-6 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 text-gray-900 overflow-visible order-1 md:order-1">
-                <div className="mb-0 -mt-16 md:-mt-12 lg:-mt-20">
+                <div className="mb-0 -mt-20 md:-mt-12 lg:-mt-20">
                   <Image
                     src="/mockup.png"
                     alt="Plataforma Aldeia Singular"
@@ -444,7 +444,7 @@ export default function Home() {
                     className="w-full h-auto rounded-lg"
                   />
                 </div>
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2">
+                <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 text-center md:text-left">
                   Acolher é o primeiro passo<br />
                   para transformar
                 </h3>
@@ -579,16 +579,16 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-4 md:mb-6 flex justify-center">
             <Image
-              src="/logo.png"
-              alt="Aldeia Singular"
-              width={180}
-              height={54}
+                  src="/logo.png"
+                  alt="Aldeia Singular"
+                  width={180}
+                  height={54}
               className="h-auto w-32 md:w-40 lg:w-48"
-            />
-          </div>
+                />
+              </div>
           <p className="text-white/80 mb-6 md:mb-8 text-sm md:text-base">
-            © 2024 Aldeia Singular. Todos os direitos reservados.
-          </p>
+                © 2024 Aldeia Singular. Todos os direitos reservados.
+              </p>
           
           {/* Subrodapé */}
           <div className="border-t border-white/20 pt-6 md:pt-8 space-y-3 md:space-y-4">
