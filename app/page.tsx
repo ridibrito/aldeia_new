@@ -1,16 +1,58 @@
 import Image from "next/image";
 import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
 import { Marquee } from "./components/marquee";
+import CardsCarousel from "./components/CardsCarousel";
 
 export default function Home() {
   const depoimentos = Array.from({ length: 10 }, (_, i) => i + 1);
+
+  const cardsData = [
+    {
+      image: "/montanha.jpg",
+      icon: "/icones/montanha_icone.png",
+      title: "Trilhas de:<br />Conhecimento",
+      description: "Participe dos encontros ao vivo<br />ou assista às gravações que<br />ajudam você a entender o que<br />são Altas Habilidades e Superdotação,<br />compreender melhor o seu filho e se<br />fortalecer como mãe ou pai.",
+    },
+    {
+      image: "/rodas.jpg",
+      icon: "/icones/rodas_icone.png",
+      title: "Entrevistas com:<br />especialistas",
+      description: "A Dra. Angela convida mensalmente<br />especialistas para conversas ao<br />vivo sobre temas como identificação,<br />escola, convivência, autocuidado e o<br />papel da família.",
+    },
+    {
+      image: "/plantao.jpg",
+      icon: "/icones/plantao_icone.png",
+      title: "Plantões de:<br />Dúvidas",
+      description: "Duas vezes por mês, encontros<br />coletivos com especialistas para<br />responder dúvidas reais<br />dos membros.",
+    },
+    {
+      image: "/acervo.jpg",
+      icon: "/icones_preço/livros.png",
+      title: "Acervo<br />Digital",
+      description: "Acesso a uma biblioteca completa<br />de materiais, artigos, livros e<br />recursos exclusivos para apoiar<br />sua jornada como pai ou mãe<br />de criança AHSD.",
+      iconOpacity: "opacity-0",
+    },
+    {
+      image: "/grupos.jpg",
+      icon: "/icones_cards/grupos.png",
+      title: "Grupos<br />Locais",
+      description: "Conecte-se com outros pais<br />da sua região através de grupos<br />locais organizados, criando<br />uma rede de apoio próxima<br />e acolhedora.",
+    },
+    {
+      image: "/ferramentas.png",
+      icon: "/icones_cards/ferramentas.png",
+      title: "Ferramentas<br />Práticas",
+      description: "Estratégias e ferramentas aplicáveis<br />no dia a dia para lidar com<br />desafios específicos, desde<br />comunicação até organização<br />da rotina familiar.",
+      imagePosition: "object-left",
+    },
+  ];
 
   return (
     <div className="min-h-screen bg-[#f7f1f2] overflow-x-hidden">
       {/* Hero Section */}
       <section className="relative h-[70vh] min-h-[300px] md:h-[90vh] md:min-h-[600px] flex flex-col px-4 py-6 md:py-12 md:py-20 overflow-hidden">
         {/* Background - Mobile */}
-        <div className="absolute inset-0 z-0 md:hidden">
+        <div className="absolute inset-0 z-0 md:hidden overflow-hidden">
         <Image
             src="/mobile.jpg"
             alt="Background"
@@ -21,7 +63,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
         {/* Background - Desktop */}
-        <div className="hidden md:block absolute inset-0 z-0">
+        <div className="hidden md:block absolute inset-0 z-0 overflow-hidden">
         <Image
             src="/imagehero.png"
             alt="Background"
@@ -33,25 +75,25 @@ export default function Home() {
         </div>
         
         {/* Main Content - Two Columns */}
-        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex-1 flex items-start md:items-center pt-8 md:pt-8 overflow-x-hidden">
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 flex-1 flex items-start md:items-center pt-8 md:pt-8">
           <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
             {/* Left Column - Headline */}
-            <div className="text-left">
+            <div className="text-left w-full relative z-20">
               <Image
                 src="/logo.png"
                 alt="Aldeia Singular"
                 width={200}
                 height={60}
                 priority
-                className="h-auto mb-4 w-65 md:w-32 lg:w-48"
+                className="h-auto mb-4 w-40 md:w-32 lg:w-48"
               />
-              <h1 className="text-4xl md:text-xl lg:text-4xl xl:text-5xl font-bold text-[#ffffff] mb-4 md:mb-6 leading-tight text-left md:text-left">
+              <h1 className="text-3xl md:text-xl lg:text-4xl xl:text-5xl font-bold text-[#ffffff] mb-4 md:mb-6 leading-tight text-left md:text-left">
               A jornada com um filho <span className="text-[#FF7167]">AHSD</span> não precisa ser solitária.
           </h1>
               <p className="text-sm md:text-lg lg:text-xl text-white/90 leading-relaxed mb-4 md:mb-0">
                 A Aldeia Singular é uma comunidade que <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent font-semibold">acolhe e fortalece mães e pais de crianças e adolescentes com Altas Habilidades e Superdotação</span>, identificados ou em processo de identificação. Criada e guiada pela Dra. Angela Virgolim, <span className="font-bold italic">é um espaço de pertencimento, aprendizado e transformação.</span>
               </p>
-              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-lg transition-colors shadow-lg border-2 border-white inline-block mt-4 md:mt-6">
+              <a href="#precos" className="relative z-20 bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-2 px-4 md:py-4 md:px-8 rounded-full text-xs md:text-lg transition-colors shadow-lg border-2 border-white inline-block mt-3 md:mt-6 w-full md:w-auto text-center">
                 QUERO FAZER PARTE DA COMUNIDADE
               </a>
             </div>
@@ -77,13 +119,11 @@ export default function Home() {
 
           {/* Text Content */}
           <div className="space-y-4 md:space-y-6 text-center md:text-right order-2 md:order-2">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF7167]">
-              Para que seu filho possa brilhar,<br />
-              você precisa estar forte.
+            <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#FF7167] leading-tight mb-2 -mt-12">
+              Para que seu filho possa brilhar, você precisa estar forte.
             </h2>
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed font-bold">
-              Percebemos que, para cuidar de filhos AHSD,<br />
-              primeiro precisávamos acolher os pais.
+            <p className="text-sm md:text-base text-gray-700 leading-tight font-bold mb-4">
+              Percebemos que, para cuidar de filhos AHSD, primeiro precisávamos acolher os pais.
             </p>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed">
               A jornada com Altas Habilidades é desafiadora: identificar os sinais, encontrar profissionais confiáveis, enfrentar preconceito na escola, falta de apoio familiar. É solidão, incerteza e <strong>gastos</strong> que não param.
@@ -187,16 +227,15 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section Title */}
-      <div className="max-w-7xl mx-auto px-4 py-8 md:py-12">
-        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-4 md:mb-8">
-          O que acontece quando você<br />
-          finalmente <span className="text-[#FF7167]">encontra sua tribo...</span>
+      <div className="max-w-7xl mx-auto px-4 py-4 md:py-6">
+        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-0 leading-tight">
+          O que acontece quando você finalmente <span className="text-[#FF7167]">encontra sua tribo...</span>
         </h2>
       </div>
 
       {/* Testimonials Section */}
       <section 
-        className="py-12 md:py-28 px-0 relative"
+        className="py-6 md:py-12 px-0 relative"
         style={{
           backgroundImage: 'url(/pattern.png)',
           backgroundSize: 'contain',
@@ -250,10 +289,10 @@ export default function Home() {
       {/* Platform Overview Section */}
       <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-0">
+          <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-0 leading-tight">
             O que tem dentro da Aldeia?
           </h2>
-          <p className="text-xl md:text-3xl lg:text-4xl text-[#FF7167] font-bold text-center mb-4">Boas vindas e acolhimento da Aldeia Singular</p>
+          <p className="text-xl md:text-3xl lg:text-4xl text-[#FF7167] font-bold text-center mb-4 mt-0 leading-tight">Boas vindas e acolhimento da Aldeia Singular</p>
           <p className="text-base md:text-lg text-gray-700 text-center mb-8 md:mb-12 max-w-3xl mx-auto px-4">
             Uma plataforma exclusiva criada especialmente para apoiar pais na jornada de criar filhos com altas habilidades e superdotação.
           </p>
@@ -290,110 +329,58 @@ export default function Home() {
       {/* Intuitive Navigation Section */}
       <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF7167] text-center mb-6 md:mb-8">
-            Você encontra tudo de forma<br />
-            intuitiva em um só lugar:
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-[#FF7167] text-center mb-6 md:mb-8 leading-tight">
+            Você encontra tudo de forma intuitiva em um só lugar:
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
-            {/* Card 1 */}
-            <div className="relative rounded-3xl md:rounded-4xl p-6 md:p-8 shadow-lg border-2 md:border-4 border-[#FF7167] overflow-hidden min-h-[350px] md:min-h-[400px]">
-              <Image
-                src="/montanha.jpg"
-                alt=""
-                fill
-                className="object-cover scale-110"
-              />
-              <div className="absolute inset-0 bg-black/50"></div>
-              <div className="relative z-10 text-center h-full flex flex-col justify-center">
-                <div className="mb-4 flex justify-center">
-                  <Image
-                    src="/icones/montanha_icone.png"
-                    alt=""
-                    width={80}
-                    height={80}
-                    className="h-16 w-16 md:h-20 md:w-20 object-contain"
-                  />
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#FF7167] mb-3 md:mb-4">
-                  Trilhas de:<br />
-                  Conhecimento
-                </h3>
-                <p className="text-sm md:text-base text-white leading-relaxed">
-                  Participe dos encontros ao vivo<br />
-                  ou assista às gravações que<br />
-                  ajudam você a entender o que<br />
-                  são Altas Habilidades e Superdotação,<br />
-                  compreender melhor o seu filho e se<br />
-                  fortalecer como mãe ou pai.
-                </p>
-              </div>
-            </div>
+          {/* Mobile Carousel */}
+          <div className="md:hidden mb-8 md:mb-12">
+            <CardsCarousel cards={cardsData} />
+          </div>
 
-            {/* Card 2 */}
-            <div className="relative rounded-3xl md:rounded-4xl p-6 md:p-8 shadow-lg border-2 md:border-4 border-[#FF7167] overflow-hidden min-h-[350px] md:min-h-[400px]">
-              <Image
-                src="/rodas.jpg"
-                alt=""
-                fill
-                className="object-cover scale-110"
-              />
-              <div className="absolute inset-0 bg-black/50"></div>
-              <div className="relative z-10 text-center h-full flex flex-col justify-center">
-                <div className="mb-4 flex justify-center">
-                  <Image
-                    src="/icones/rodas_icone.png"
-                    alt=""
-                    width={80}
-                    height={80}
-                    className="h-16 w-16 md:h-20 md:w-20 object-contain"
-                  />
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
+            {cardsData.map((card, index) => (
+              <div
+                key={index}
+                className="relative rounded-3xl md:rounded-4xl p-6 md:p-8 shadow-lg border-2 md:border-4 border-[#FF7167] overflow-hidden min-h-[350px] md:min-h-[400px]"
+              >
+                <Image
+                  src={card.image}
+                  alt=""
+                  fill
+                  className={`object-cover scale-110 ${card.imagePosition || ""}`}
+                />
+                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="relative z-10 text-center h-full flex flex-col justify-center">
+                  <div className="mb-4 flex justify-center">
+                    <Image
+                      src={card.icon}
+                      alt=""
+                      width={80}
+                      height={80}
+                      className={`h-16 w-16 md:h-20 md:w-20 object-contain ${card.iconOpacity || ""}`}
+                    />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-[#FF7167] mb-3 md:mb-4">
+                    {card.title.split("<br />").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        {i < card.title.split("<br />").length - 1 && <br />}
+                      </span>
+                    ))}
+                  </h3>
+                  <p className="text-sm md:text-base text-white leading-relaxed">
+                    {card.description.split("<br />").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        {i < card.description.split("<br />").length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#FF7167] mb-3 md:mb-4">
-                  Entrevistas com:<br />
-                  especialistas
-                </h3>
-                <p className="text-sm md:text-base text-white leading-relaxed">
-                  A Dra. Angela convida mensalmente<br />
-                  especialistas para conversas ao<br />
-                  vivo sobre temas como identificação,<br />
-                  escola, convivência, autocuidado e o<br />
-                  papel da família.
-                </p>
               </div>
-            </div>
-
-            {/* Card 3 */}
-            <div className="relative rounded-3xl md:rounded-4xl p-6 md:p-8 shadow-lg border-2 md:border-4 border-[#FF7167] overflow-hidden min-h-[350px] md:min-h-[400px]">
-              <Image
-                src="/plantao.jpg"
-                alt=""
-                fill
-                className="object-cover scale-110"
-              />
-              <div className="absolute inset-0 bg-black/50"></div>
-              <div className="relative z-10 text-center h-full flex flex-col justify-center">
-                <div className="mb-4 flex justify-center">
-                  <Image
-                    src="/icones/plantao_icone.png"
-                    alt=""
-                    width={80}
-                    height={80}
-                    className="h-16 w-16 md:h-20 md:w-20 object-contain"
-                  />
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-[#FF7167] mb-3 md:mb-4">
-                  Plantões de:<br />
-                  Dúvidas
-                </h3>
-                <p className="text-sm md:text-base text-white leading-relaxed">
-                  Duas vezes por mês, encontros<br />
-                  coletivos com especialistas para<br />
-                  responder dúvidas reais<br />
-                  dos membros.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
 
           <div className="text-center">
@@ -407,7 +394,7 @@ export default function Home() {
       {/* Meet the Guide Section */}
       <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-0">
+          <h2 className="text-xl font-bold text-gray-900 text-center mb-0">
             Quem vai te guiar nessa jornada?
           </h2>
           <p className="text-xl md:text-3xl lg:text-4xl font-bold text-[#FF7167] mb-6 md:mb-12">Conheça a Dra. Angela Virgolim</p>
@@ -426,16 +413,15 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="precos" className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-6 md:mb-8">
-            Quanto tenho que investir<br />
-            <span className="text-[#FF7167]">para fazer parte da Aldeia?</span>
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-6 md:mb-8 leading-tight">
+            Quanto tenho que investir <span className="text-[#FF7167]">para fazer parte da Aldeia?</span>
           </h2>
 
           <div className="max-w-5xl mx-auto bg-[#f7f1f2] rounded-2xl shadow-2xl overflow-visible">
             <div className="grid md:grid-cols-2">
               {/* Left Column - Benefits */}
               <div className="bg-white pb-6 md:pb-8 lg:pb-12 px-4 md:px-8 lg:px-12 text-gray-900 overflow-visible order-1 md:order-1">
-                <div className="mb-0 -mt-20 md:-mt-12 lg:-mt-20">
+                <div className="mb-0 -mt-12 md:-mt-12 lg:-mt-20">
                   <Image
                     src="/mockup.png"
                     alt="Plataforma Aldeia Singular"
@@ -444,9 +430,8 @@ export default function Home() {
                     className="w-full h-auto rounded-lg"
                   />
                 </div>
-                <h3 className="text-xl md:text-2xl lg:text-3xl font-extrabold mb-2 text-center md:text-left">
-                  Acolher é o primeiro passo<br />
-                  para transformar
+                <h3 className="text-lg md:text-xl lg:text-2xl font-extrabold mb-2 text-center md:text-left leading-tight">
+                  Acolher é o primeiro passo para transformar
                 </h3>
                 <div className="flex justify-center mb-4 md:mb-6">
                   <Image 
@@ -514,7 +499,7 @@ export default function Home() {
                     className="mb-2 md:mb-3 w-8 h-8 md:w-10 md:h-10"
                   />
                   <p className="text-white text-center text-xs md:text-sm">
-                    Acesso imediato por 12 meses.<br />
+                    Garantia incondicional de 7 dias .<br />
                     Cancelamento fácil e transparente.
                   </p>
                 </div>
@@ -527,7 +512,7 @@ export default function Home() {
       {/* Investment Philosophy Section - Test Purple */}
       <section className="py-12 md:py-20 px-4 bg-[#450655]">
         <div className="max-w-4xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white text-center mb-6 md:mb-8 uppercase">
+          <h2 className="text-lg md:text-3xl lg:text-4xl font-bold text-white text-center mb-6 md:mb-8 uppercase leading-tight">
             VOCÊ NÃO ESTÁ INVESTINDO NA COMUNIDADE...
           </h2>
           <p className="text-base md:text-lg lg:text-xl text-white mb-6 md:mb-10 leading-relaxed px-4">
