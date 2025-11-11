@@ -8,11 +8,11 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f7f1f2]">
       {/* Hero Section */}
-      <section className="relative min-h-screen flex flex-col px-4 py-20 overflow-hidden">
+      <section className="relative h-[90vh] min-h-[600px] flex flex-col px-4 py-20 overflow-hidden">
         {/* Background */}
         <div className="absolute inset-0 z-0">
         <Image
-            src="/hero.png"
+            src="/imagehero.png"
             alt="Background"
             fill
             className="object-cover"
@@ -34,12 +34,15 @@ export default function Home() {
                 priority
                 className="h-auto mb-4"
               />
-              <h1 className="text-2xl md:text-5xl lg:text-5xl font-bold text-[#ffffff] mb-6 leading-tight">
-              A jornada com um filho de Altas Habilidades não precisa ser solitária.
+              <h1 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#ffffff] mb-6 leading-tight">
+              A jornada com um filho <span className="text-[#FF7167]">AHSD</span> não precisa ser solitária.
           </h1>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed">
-                Junte-se a uma comunidade acolhedora de pais que entendem os desafios únicos de criar filhos com altas habilidades. Encontre apoio, recursos e conexões que transformarão sua jornada.
+                A Aldeia Singular é uma comunidade que <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent font-semibold">acolhe e fortalece mães e pais de crianças e adolescentes com Altas Habilidades e Superdotação</span>, identificados ou em processo de identificação. Criada e guiada pela Dra. Angela Virgolim, <span className="font-bold italic">é um espaço de pertencimento, aprendizado e transformação.</span>
               </p>
+              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors shadow-lg border-2 border-white inline-block mt-6">
+                QUERO FAZER PARTE DA COMUNIDADE
+              </a>
             </div>
 
           </div>
@@ -62,15 +65,26 @@ export default function Home() {
           </div>
 
           {/* Text Content */}
-          <div className="space-y-6">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167]">
-              PARA QUE SEU FILHO BRILHE, VOCÊ PRECISA ESTAR FORTE.
+          <div className="space-y-6 text-right">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167] text-right">
+              Para que seu filho possa brilhar,<br />
+              você precisa estar forte.
             </h2>
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Criar filhos com altas habilidades e superdotação é uma jornada única, cheia de desafios e oportunidades. Muitas vezes, os pais se sentem isolados, sem saber onde encontrar apoio ou como navegar pelos desafios específicos dessa realidade.
+            <p className="text-lg text-gray-700 leading-relaxed font-bold">
+              Percebemos que, para cuidar de filhos AHSD,<br />
+              primeiro precisávamos acolher os pais.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Na Aldeia Singular, você encontra uma comunidade acolhedora que entende suas necessidades e oferece recursos práticos, suporte emocional e conexões significativas com outros pais que compartilham experiências similares.
+              A jornada com Altas Habilidades é desafiadora: identificar os sinais, encontrar profissionais confiáveis, enfrentar preconceito na escola, falta de apoio familiar. É solidão, incerteza e <strong>gastos</strong> que não param.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              No meio dessa batalha diária, descobrimos a peça que faltava:
+            </p>
+            <h3 className="text-2xl md:text-3xl font-extrabold text-[#FF7167]">
+              Quem cuida de você?
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              Como você pode ser o porto-seguro do seu filho, se você também está sobrecarregado(a), incompreendido(a) e sem apoio?
             </p>
             <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO FAZER PARTE DA COMUNIDADE
@@ -152,7 +166,7 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center">
-            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-4 rounded-xl text-2xl transition-colors shadow-lg border-2 border-white inline-block">
+            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO ESSA TRANSFORMAÇÃO
             </a>
           </div>
@@ -161,7 +175,7 @@ export default function Home() {
 
       {/* Testimonials Section Title */}
       <div className="max-w-7xl mx-auto px-4 py-12">
-        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center">
+        <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
           O que acontece quando você<br />
           finalmente <span className="text-[#FF7167]">encontra sua tribo...</span>
         </h2>
@@ -223,10 +237,10 @@ export default function Home() {
       {/* Platform Overview Section */}
       <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-0">
             O que tem dentro da Aldeia?
           </h2>
-          <p className="text-xl text-gray-600 text-center mb-4">Boas vindas e acolhimento da Aldeia Singular</p>
+          <p className="text-3xl md:text-4xl text-[#FF7167] font-bold text-center mb-4">Boas vindas e acolhimento da Aldeia Singular</p>
           <p className="text-lg text-gray-700 text-center mb-12 max-w-3xl mx-auto">
             Uma plataforma exclusiva criada especialmente para apoiar pais na jornada de criar filhos com altas habilidades e superdotação.
           </p>
@@ -263,7 +277,7 @@ export default function Home() {
       {/* Intuitive Navigation Section */}
       <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167] text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167] text-center mb-8">
             Você encontra tudo de forma<br />
             intuitiva em um só lugar:
           </h2>
@@ -380,10 +394,10 @@ export default function Home() {
       {/* Meet the Guide Section */}
       <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-0">
             Quem vai te guiar nessa jornada?
           </h2>
-          <p className="text-2xl md:text-4xl font-bold text-[#FF7167] mb-12">Conheça a Dra. Angela Virgolim</p>
+          <p className="text-3xl md:text-4xl font-bold text-[#FF7167] mb-12">Conheça a Dra. Angela Virgolim</p>
 
           <div className="max-w-4xl mx-auto">
             <HeroVideoDialog
@@ -399,98 +413,123 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="precos" className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
-            Quanto tenho que investir para fazer parte da Aldeia?
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
+            Quanto tenho que investir<br />
+            <span className="text-[#FF7167]">para fazer parte da Aldeia?</span>
           </h2>
 
-          <div className="max-w-5xl mx-auto bg-[#f7f1f2] rounded-2xl shadow-2xl overflow-hidden">
+          <div className="max-w-5xl mx-auto bg-[#f7f1f2] rounded-2xl shadow-2xl overflow-visible">
             <div className="grid md:grid-cols-2">
               {/* Left Column - Benefits */}
-              <div className="bg-gradient-to-br from-[#450655] to-[#450655] p-8 md:p-12 text-white">
-                <h3 className="text-2xl font-bold mb-6">ACOLHER É O PRIMEIRO PASSO PARA TRANSFORMAR</h3>
-                <ul className="space-y-4">
+              <div className="bg-white pb-8 md:pb-12 px-8 md:px-12 text-gray-900 overflow-visible">
+                <div className="mb-0 -mt-12 md:-mt-20">
+                  <Image
+                    src="/mockup.png"
+                    alt="Plataforma Aldeia Singular"
+                    width={600}
+                    height={400}
+                    className="w-full h-auto rounded-lg"
+                  />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-extrabold mb-2">
+                  Acolher é o primeiro passo<br />
+                  para transformar
+                </h3>
+                <div className="flex justify-center mb-6">
+                  <Image 
+                    src="/sublinhado.png" 
+                    alt="" 
+                    width={500} 
+                    height={8}
+                    className="h-auto"
+                    style={{ filter: 'brightness(0) saturate(100%) invert(15%) sepia(90%) saturate(3000%) hue-rotate(260deg) brightness(0.6) contrast(1.2)' }}
+                  />
+                </div>
+                <ul className="space-y-4 text-[#450655] ">
                   {[
-                    "Acesso à Plataforma Exclusiva",
-                    "10+ encontros ao vivo mensais",
-                    "50+ horas de conteúdo",
-                    "Cursos Express",
-                    "Artigos e materiais complementares",
-                    "Ferramentas práticas para o dia a dia",
-                    "Comunidade ativa e acolhedora"
+                    { text: " Acesso à Plataforma Exclusiva Aldeia Singular", icon: "/icones_preço/celular.png" },
+                    { text: "+ 55 encontros ao vivo", icon: "/icones_preço/55encontros.png" },
+                    { text: "+ 110h de conteúdos e conhecimento", icon: "/icones_preço/110horas.png" },
+                    { text: "Curso PAPAiS Express – Programa de Apoio aos Pais de Superdotados", icon: "/icones_preço/curso_papais.png" },
+                    { text: "Livros, artigos, lives e materiais complementares.", icon: "/icones_preço/livros.png" },
+                    { text: "Ferramentas e estratégias aplicáveis", icon: "/icones_preço/ferramentas.png" }
                   ].map((item, index) => (
-                    <li key={index} className="flex items-start gap-3">
-                      <svg className="w-6 h-6 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      <span className="text-lg">{item}</span>
+                    <li key={index} className="flex items-center gap-3">
+                      <Image
+                        src={item.icon}
+                        alt=""
+                        width={24}
+                        height={24}
+                        className="flex-shrink-0"
+                      />
+                      <span className="text-lg">{item.text}</span>
                     </li>
                   ))}
                 </ul>
               </div>
 
               {/* Right Column - Price */}
-              <div className="p-8 md:p-12 flex flex-col items-center justify-center bg-[#f7f1f2]">
-                <div className="w-20 h-20 bg-pink-200 rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-10 h-10 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10 2L2 7l8 5 8-5-8-5zM2 17l8 5 8-5M2 12l8 5 8-5" />
-                  </svg>
+              <div className="p-8 md:p-12 flex flex-col items-center justify-center bg-[#450655]">
+                <div className="mb-6">
+                  <Image
+                    src="/icone.svg"
+                    alt="Ícone"
+                    width={80}
+                    height={80}
+                    className="w-80 h-20"
+                  />
                 </div>
-                <div className="text-center mb-8">
-                  <p className="text-5xl font-bold text-gray-900 mb-2">12x de R$ 98,00</p>
-                  <p className="text-xl text-gray-600">ou R$ 947,00 à vista</p>
+                <div className="text-center mb-8 bg-white rounded-4xl py-6 px-6 border-2 border-[#FF7167]">
+                  <p className="text-3xl font-semibold text-[#FF7167] mb-2">
+                    POR APENAS
+                  </p>
+                  <p className="text-5xl text-[#FF7167] mb-2">
+                    <span className="text-3xl font-semibold text-[#450655]">12x de </span>
+                    <span className="text-6xl font-extrabold italic">R$ 98,00</span>
+                  </p>
+                  <p className="text-xl text-[#450655]">ou R$ 947,58 à vista</p>
                 </div>
-                <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors w-full max-w-xs shadow-lg border-2 border-white inline-block text-center">
-                  QUERO ENTRAR PARA A ALDEIA SINGULAR
+                <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors w-full max-w-md shadow-lg border-2 border-white inline-block text-center whitespace-nowrap">
+                 ENTRAR PARA A ALDEIA SINGULAR
                 </a>
+                <div className="mt-6 flex flex-col items-center">
+                  <Image
+                    src="/escudo.png"
+                    alt="Escudo"
+                    width={40}
+                    height={40}
+                    className="mb-3"
+                  />
+                  <p className="text-white text-center text-sm">
+                    Acesso imediato por 12 meses.<br />
+                    Cancelamento fácil e transparente.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Investment Philosophy Section */}
-      <section className="py-20 px-4 bg-[#f7f1f2]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            {/* Left Column - Text Content */}
-            <div className="text-left">
-              <h2 className="text-3xl md:text-4xl font-bold text-[#FF7167] mb-6 uppercase">
-                VOCÊ NÃO ESTÁ INVESTINDO NA COMUNIDADE...
-              </h2>
-              <p className="text-lg text-gray-700 mb-8 leading-relaxed">
-                Está investindo no seu bem-estar, da sua família. No futuro do seu filho, na tranquilidade da sua casa. Pois esse é o lema da nossa comunidade:
-              </p>
-              <div className="space-y-2 text-xl md:text-2xl">
-                <p>
-                  <span className="font-bold text-[#FFA500]">Acolher</span>
-                  <span className="text-gray-700"> Pais.</span>
-                </p>
-                <p>
-                  <span className="font-bold text-[#FFA500]">Compreender</span>
-                  <span className="text-gray-700"> Filhos.</span>
-                </p>
-                <p>
-                  <span className="font-bold text-[#FFA500]">Fortalecer</span>
-                  <span className="text-gray-700"> lares</span>
-                </p>
-              </div>
-            </div>
-
-            {/* Right Column - CTA Button */}
-            <div className="flex justify-center md:justify-end">
-              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-8 px-12 rounded-2xl text-2xl md:text-3xl transition-colors shadow-lg border-2 border-white inline-block text-center">
-                QUERO ENTRAR PARA<br />
-                A ALDEIA SINGULAR
-              </a>
-            </div>
-          </div>
+      {/* Investment Philosophy Section - Test Purple */}
+      <section className="py-20 px-4 bg-[#450655]">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center mb-8 uppercase">
+            VOCÊ NÃO ESTÁ INVESTINDO NA COMUNIDADE...
+          </h2>
+          <p className="text-lg md:text-xl text-white mb-10 leading-relaxed">
+            Está investindo no seu bem-estar, da sua família. No futuro do seu filho, na tranquilidade da sua casa. Pois esse é o lema da nossa comunidade:
+          </p>
+          <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-4 px-8 rounded-full text-lg transition-colors shadow-lg border-2 border-white inline-block">
+            QUERO ENTRAR PARA A ALDEIA SINGULAR
+          </a>
         </div>
       </section>
 
       {/* FAQ Section */}
       <section className="py-20 px-4 bg-[#f7f1f2]">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 text-center mb-8">
             Dúvidas frequentes
           </h2>
 
