@@ -47,7 +47,7 @@ export default function CardsCarousel({ cards }: CardsCarouselProps) {
                 fill
                 className={`object-cover scale-110 ${card.imagePosition || ""}`}
               />
-              <div className="absolute inset-0 bg-black/50"></div>
+              <div className="absolute inset-0 bg-black/70"></div>
               <div className="relative z-10 text-center h-full flex flex-col justify-center">
                 <div className="mb-4 flex justify-center">
                   <Image

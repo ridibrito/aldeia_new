@@ -1,45 +1,253 @@
+"use client";
+
 import Image from "next/image";
 import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
 import { Marquee } from "./components/marquee";
 import CardsCarousel from "./components/CardsCarousel";
+import { useState } from "react";
+
+function FAQSection() {
+  const [showMore, setShowMore] = useState(false);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  // Todas as perguntas sem duplicatas
+  const allQuestions = [
+    {
+      question: "O que é a Aldeia Singular?",
+      answer: "A Aldeia Singular é uma comunidade de acolhimento, aprendizado e apoio para mães, pais e familiares de crianças e adolescentes com Altas Habilidades e Superdotação (AHSD). Um espaço seguro para trocar experiências, fortalecer vínculos e aprender com especialistas convidados pela Dra. Angela Virgolim."
+    },
+    {
+      question: "Posso participar mesmo que meu filho ainda não tenha sido identificado?",
+      answer: "Sim. A Aldeia acolhe mães e pais que desconfiam, estão em processo de investigação ou já têm filhos identificados com AHSD."
+    },
+    {
+      question: "Entrando agora, terei acesso aos conteúdos anteriores?",
+      answer: "Sim! Você terá acesso imediato a todos os encontros e materiais já gravados."
+    },
+    {
+      question: "O conteúdo é conduzido pela Dra. Angela Virgolim?",
+      answer: "Sim. A Dra. Angela está presente na condução dos conteúdos e encontros, além de liderar toda a curadoria dos materiais e convidados."
+    },
+    {
+      question: "A Aldeia substitui uma avaliação formal de AHSD?",
+      answer: "Não. A Aldeia é um espaço de orientação e apoio, mas não realiza avaliações clínicas. Para identificação formal, é essencial procurar profissionais especializados."
+    },
+    {
+      question: "Como posso interagir com outras mães e pais da Aldeia?",
+      answer: "Você pode se conectar com outros membros da sua tribo, participar dos encontros online e interagir em um grupo digital exclusivo, criado especialmente para troca, acolhimento e aprendizado contínuo."
+    },
+    {
+      question: "Meu filho já é adolescente (ou quase adulto). A Aldeia também serve para mim?",
+      answer: "Sim. Nossos conteúdos abordam o desenvolvimento e os desafios das diferentes fases, da infância à adolescência, ajudando você a compreender e apoiar seu filho em cada etapa."
+    },
+    {
+      question: "Como funciona o acesso à plataforma?",
+      answer: "Assim que você entra para a Aldeia Singular, recebe imediatamente suas credenciais e o link para o grupo exclusivo da sua tribo."
+    },
+    {
+      question: "Posso acessar o conteúdo no meu tempo?",
+      answer: "Sim. Todos os conteúdos são gravados e ficam disponíveis na plataforma 24 horas por dia, para que você possa assistir no seu ritmo."
+    },
+    {
+      question: "O conteúdo é atualizado?",
+      answer: "Sim. Novos encontros e materiais são adicionados todos os meses, acompanhando as mais recentes pesquisas e descobertas sobre AHSD."
+    },
+    {
+      question: "Como funciona o acervo digital?",
+      answer: "Nosso acervo reúne vídeos, cursos, artigos e livros cuidadosamente selecionados pela Dra. Angela e sua equipe."
+    },
+    {
+      question: "Quantos encontros acontecem por mês?",
+      answer: "Temos um encontro por semana, em diferentes formatos: Plantões de Dúvidas, Rodas de Conversa, Trilhas de Conhecimento e encontros especiais com convidados."
+    },
+    {
+      question: "O que são os Plantões de Dúvidas?",
+      answer: "Acontecem a cada duas semanas, em formato ao vivo e coletivo. Antes de cada plantão, você pode enviar suas dúvidas sobre o tema proposto. O especialista convidado responde ao vivo, em um momento de escuta e orientação acolhedora."
+    },
+    {
+      question: "O que são as Rodas de Conversa?",
+      answer: "São encontros mensais, com temas que conectam as experiências das famílias e o olhar de especialistas convidados pela Dra. Angela."
+    },
+    {
+      question: "Se eu não puder participar ao vivo, posso assistir depois?",
+      answer: "Sim. Todos os encontros são gravados e disponibilizados na plataforma em até 48 horas."
+    },
+    {
+      question: "Há encontros presenciais?",
+      answer: "Sim. Os grupos locais podem organizar encontros presenciais, fortalecendo as conexões entre as famílias."
+    },
+    {
+      question: "Como funcionam os grupos exclusivos?",
+      answer: "Os grupos são organizados por região e perfil, com cerca de 30 membros cada. Eles promovem trocas próximas, acolhedoras e encontros locais entre mães e pais que vivem desafios semelhantes."
+    },
+    {
+      question: "Há suporte para famílias com mais de um filho com AHSD?",
+      answer: "Sim. Temos conteúdos e estratégias específicas para quem vive essa realidade."
+    },
+    {
+      question: "E se meu filho tiver dupla condição ou dupla excepcionalidade (como AHSD + TDAH ou TEA)?",
+      answer: "Sim. Esses temas são tratados em nossas trilhas de conhecimento e encontros com especialistas."
+    },
+    {
+      question: "Os conteúdos têm base científica?",
+      answer: "Sim. Todo o conteúdo é desenvolvido com base em pesquisas científicas e experiência clínica da Dra. Angela e de profissionais especializados."
+    },
+    {
+      question: "Com a Aldeia, ainda preciso procurar outros especialistas?",
+      answer: "Sim. A Aldeia não substitui o acompanhamento individual. Ela complementa o trabalho dos profissionais, oferecendo informação, apoio emocional e orientação prática."
+    },
+    {
+      question: "Terei acesso a consultas individuais?",
+      answer: "Não realizamos atendimentos clínicos. Nossos encontros são coletivos, como os Plantões de Dúvidas e Rodas de Conversa, que oferecem espaço para orientação e esclarecimento."
+    },
+    {
+      question: "Como posso tirar dúvidas específicas?",
+      answer: "Você pode participar dos Plantões de Dúvidas, enviar perguntas pelo seu grupo exclusivo ou conversar com nossa equipe de suporte."
+    },
+    {
+      question: "Há suporte técnico disponível?",
+      answer: "Sim. Nosso suporte funciona em horário comercial pelo WhatsApp, para ajudar com qualquer dificuldade de acesso ou uso da plataforma."
+    },
+    {
+      question: "Posso cancelar minha assinatura?",
+      answer: "Sim. Você pode cancelar a qualquer momento pela plataforma Hotmart."
+    },
+    {
+      question: "Tenho algum período de garantia?",
+      answer: "Sim. Oferecemos 7 dias de garantia incondicional. Se não ficar satisfeito, devolvemos 100% do valor investido."
+    }
+  ];
+
+  // Primeiras 6 perguntas são os destaques
+  const highlights = allQuestions.slice(0, 6);
+  // Resto das perguntas
+  const moreQuestions = allQuestions.slice(6);
+
+  const toggleQuestion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
+  return (
+    <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
+      <div className="max-w-4xl mx-auto">
+        <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-6 md:mb-8">
+          Dúvidas frequentes
+        </h2>
+
+        {/* Destaques */}
+        <div className="mb-6 md:mb-8">
+          <div className="space-y-3 md:space-y-4">
+            {highlights.map((item, index) => (
+              <div key={index} className="bg-white rounded-xl p-4 md:p-6 shadow-md border-2 border-[#FF7167]">
+                <button
+                  onClick={() => toggleQuestion(index)}
+                  className="w-full flex items-center justify-between gap-4 text-left"
+                >
+                  <p className="text-base md:text-lg font-semibold text-gray-900">{item.question}</p>
+                  <svg 
+                    className={`w-5 h-5 md:w-6 md:h-6 text-[#FF7167] flex-shrink-0 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
+                    fill="none" 
+                    stroke="currentColor" 
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                  </svg>
+                </button>
+                {openIndex === index && (
+                  <div className="mt-4 pt-4 border-t border-gray-200">
+                    <p className="text-sm md:text-base text-gray-700 leading-relaxed">{item.answer}</p>
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Ver mais perguntas */}
+        {!showMore && (
+          <div className="text-center mt-6 md:mt-8">
+            <button
+              onClick={() => setShowMore(true)}
+              className="text-[#450655] hover:text-[#450655]/80 text-sm md:text-base"
+            >
+              Ver mais perguntas
+            </button>
+          </div>
+        )}
+
+        {/* Todas as outras perguntas */}
+        {showMore && (
+          <div className="space-y-3 md:space-y-4">
+            {moreQuestions.map((item, index) => {
+              const globalIndex = highlights.length + index;
+              return (
+                <div key={index} className="bg-white rounded-xl p-4 md:p-6 shadow-md border-2 border-[#FF7167]">
+                  <button
+                    onClick={() => toggleQuestion(globalIndex)}
+                    className="w-full flex items-center justify-between gap-4 text-left"
+                  >
+                    <p className="text-base md:text-lg font-semibold text-gray-900">{item.question}</p>
+                    <svg 
+                      className={`w-5 h-5 md:w-6 md:h-6 text-[#FF7167] flex-shrink-0 transition-transform ${openIndex === globalIndex ? 'rotate-180' : ''}`}
+                      fill="none" 
+                      stroke="currentColor" 
+                      viewBox="0 0 24 24"
+                    >
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </button>
+                  {openIndex === globalIndex && (
+                    <div className="mt-4 pt-4 border-t border-gray-200">
+                      <p className="text-sm md:text-base text-gray-700 leading-relaxed">{item.answer}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        )}
+      </div>
+    </section>
+  );
+}
 
 export default function Home() {
   const depoimentos = Array.from({ length: 10 }, (_, i) => i + 1);
 
   const cardsData = [
     {
-      image: "/montanha.jpg",
+      image: "/imagem_card/trilhas de conhecimento.jpg",
       icon: "/icones/montanha_icone.png",
-      title: "Trilhas de:<br />Conhecimento",
+      title: "Trilhas de<br />Conhecimento",
       description: "Participe dos encontros ao vivo<br />ou assista às gravações que<br />ajudam você a entender o que<br />são Altas Habilidades e Superdotação,<br />compreender melhor o seu filho e se<br />fortalecer como mãe ou pai.",
     },
     {
-      image: "/rodas.jpg",
+      image: "/imagem_card/entrevistas com especialistas.jpg",
       icon: "/icones/rodas_icone.png",
-      title: "Entrevistas com:<br />especialistas",
+      title: "Entrevistas com<br />especialistas",
       description: "A Dra. Angela convida mensalmente<br />especialistas para conversas ao<br />vivo sobre temas como identificação,<br />escola, convivência, autocuidado e o<br />papel da família.",
     },
     {
-      image: "/plantao.jpg",
+      image: "/imagem_card/plantões de súvidas.jpg",
       icon: "/icones/plantao_icone.png",
-      title: "Plantões de:<br />Dúvidas",
+      title: "Plantões de<br />Dúvidas",
       description: "Duas vezes por mês, encontros<br />coletivos com especialistas para<br />responder dúvidas reais<br />dos membros.",
     },
     {
-      image: "/acervo.jpg",
+      image: "/imagem_card/acervo digital.jpg",
       icon: "/icones_preço/livros.png",
       title: "Acervo<br />Digital",
       description: "Acesso a uma biblioteca completa<br />de materiais, artigos, livros e<br />recursos exclusivos para apoiar<br />sua jornada como pai ou mãe<br />de criança AHSD.",
       iconOpacity: "opacity-0",
     },
     {
-      image: "/grupos.jpg",
+      image: "/imagem_card/grupos locais.jpg",
       icon: "/icones_cards/grupos.png",
       title: "Grupos<br />Locais",
       description: "Conecte-se com outros pais<br />da sua região através de grupos<br />locais organizados, criando<br />uma rede de apoio próxima<br />e acolhedora.",
     },
     {
-      image: "/ferramentas.png",
+      image: "/imagem_card/ferramentas praticas.jpg",
       icon: "/icones_cards/ferramentas.png",
       title: "Ferramentas<br />Práticas",
       description: "Estratégias e ferramentas aplicáveis<br />no dia a dia para lidar com<br />desafios específicos, desde<br />comunicação até organização<br />da rotina familiar.",
@@ -50,54 +258,68 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f7f1f2] overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative h-[80vh] min-h-[300px] md:h-[90vh] md:min-h-[600px] flex flex-col px-4 py-6 md:py-12 md:py-20 overflow-hidden">
+      <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col overflow-hidden">
         {/* Background - Mobile */}
-        <div className="absolute inset-0 z-0 md:hidden overflow-hidden">
-        <Image
+        <div className="absolute inset-0 z-0 md:hidden">
+          <Image
             src="/mobile.jpg"
             alt="Background"
             fill
             className="object-cover object-top"
-          priority
-        />
+            priority
+          />
           <div className="absolute inset-0 bg-black/50"></div>
         </div>
+        
         {/* Background - Desktop */}
-        <div className="hidden md:block absolute inset-0 z-0 overflow-hidden">
-        <Image
+        <div className="hidden md:block absolute inset-0 z-0">
+          <Image
             src="/imagehero.png"
             alt="Background"
             fill
             className="object-cover"
-          priority
-        />
+            priority
+          />
           <div className="absolute inset-0 bg-black/30"></div>
         </div>
         
-        {/* Main Content - Two Columns */}
-        <div className="relative z-10 w-full mx-auto px-2 flex-1 flex items-start md:items-center pt-8 md:pt-8">
-          <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center w-full">
-            {/* Left Column - Headline */}
-            <div className="text-left w-full relative z-20">
-              <Image
-                src="/logo.png"
-                alt="Aldeia Singular"
-                width={200}
-                height={60}
-                priority
-                className="h-auto mb-4 w-50 md:w-32 lg:w-48"
-              />
-              <h1 className="text-2xl md:text-xl lg:text-4xl xl:text-5xl font-bold text-[#ffffff] mb-4 md:mb-6 leading-tight text-left md:text-left">
-              A jornada com um filho <span className="text-[#FF7167]">AHSD</span> não precisa ser solitária.
-          </h1>
-              <p className="text-md md:text-lg lg:text-xl text-white/90 leading-relaxed mb-4 md:mb-0">
+        {/* Main Content */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex-1 flex items-center py-12 md:py-16 lg:py-20">
+          <div className="w-full">
+            {/* Content Container */}
+            <div className="text-left space-y-6 md:space-y-8 max-w-3xl">
+              {/* Logo */}
+              <div>
+                <Image
+                  src="/logo.png"
+                  alt="Aldeia Singular"
+                  width={200}
+                  height={60}
+                  priority
+                  className="h-auto w-40 md:w-48 lg:w-56"
+                />
+              </div>
+              
+              {/* Heading */}
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
+                A jornada com um filho <span className="text-[#FF7167]">AHSD</span> não precisa ser solitária.
+              </h1>
+              
+              {/* Subtitle */}
+              <p className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed">
                 A Aldeia Singular é uma comunidade que <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent font-semibold">acolhe e fortalece mães e pais de crianças e adolescentes com Altas Habilidades e Superdotação</span>, identificados ou em processo de identificação. Criada e guiada pela Dra. Angela Virgolim, <span className="font-bold italic">é um espaço de pertencimento, aprendizado e transformação.</span>
               </p>
-              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-lg transition-colors shadow-lg border-2 border-white inline-block">
-                QUERO FAZER PARTE DA COMUNIDADE
-              </a>
+              
+              {/* CTA Button */}
+              <div className="pt-2">
+                <a 
+                  href="#precos" 
+                  className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block"
+                >
+                  QUERO FAZER PARTE DA COMUNIDADE
+                </a>
+              </div>
             </div>
-
           </div>
         </div>
       </section>
@@ -289,7 +511,7 @@ export default function Home() {
           <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-0 leading-tight">
             O que tem dentro da Aldeia?
           </h2>
-          <p className="text-xl md:text-3xl lg:text-4xl text-[#FF7167] font-bold text-center mb-4 mt-0 leading-tight">Boas vindas e acolhimento da Aldeia Singular</p>
+          <p className="text-xl md:text-3xl lg:text-4xl text-[#FF7167] font-bold text-center mb-4 mt-0 leading-tight">Descubra tudo que te espera na nossa comunidade.</p>
           <p className="text-base md:text-lg text-gray-700 text-center mb-8 md:mb-12 max-w-3xl mx-auto px-4">
             Uma plataforma exclusiva criada especialmente para apoiar pais na jornada de criar filhos com altas habilidades e superdotação.
           </p>
@@ -298,23 +520,23 @@ export default function Home() {
         {/* Plataforma Autoral Exclusiva - Full Width Orange Section */}
         <div className="w-screen bg-[#FF7167] relative overflow-hidden md:overflow-visible py-12 md:py-20 lg:py-10 -mx-4 md:mx-0">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-6 md:gap-12 items-center">
+            <div className="grid md:grid-cols-2 gap-8 md:gap-16 lg:gap-20 items-center">
               {/* Image */}
               <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-video bg-transparent -mt-12 md:-my-8 lg:-my-12 order-1 md:order-1">
                 <Image
                   src="/mockup.png"
                   alt="Plataforma Desktop e Mobile"
                   fill
-                  className="object-contain scale-125 md:scale-160"
+                  className="object-contain scale-150 md:scale-[2]"
                 />
             </div>
 
             {/* Text Content */}
               <div className="space-y-4 md:space-y-6 order-2 md:order-2 text-center md:text-left">
-                <h3 className="text-2xl md:text-3xl font-bold text-[#450655]">Plataforma Autoral Exclusiva</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-[#450655]">Plataforma Exclusiva</h3>
                 <p className="text-base md:text-lg text-white leading-relaxed">
                 Cansados de portais de cursos genéricos, construímos a plataforma da Aldeia Singular do zero.
-                O resultado é um ecossistema pensado para cada detalhe da sua jornada, unindo o conhecimento profundo da Dra. Ângela Virgolim com a organização e a facilidade que você merece.                </p>
+                O resultado é um ecossistema pensado para cada detalhe da sua jornada, unindo o conhecimento profundo da Dra. Angela Virgolim com a organização e a facilidade que você merece.                </p>
                 <p className="text-base md:text-lg text-white leading-relaxed">
                 Chega de se sentir perdido(a) em um mar de informações soltas ou em grupos de WhatsApp onde o conteúdo se perde.                </p>
               </div>
@@ -348,7 +570,7 @@ export default function Home() {
                   fill
                   className={`object-cover scale-110 ${card.imagePosition || ""}`}
                 />
-                <div className="absolute inset-0 bg-black/50"></div>
+                <div className="absolute inset-0 bg-black/70"></div>
                 <div className="relative z-10 text-center h-full flex flex-col justify-center">
                   <div className="mb-4 flex justify-center">
                     <Image
@@ -442,7 +664,7 @@ export default function Home() {
                 </div>
                 <ul className="space-y-3 md:space-y-4 text-[#450655]">
                   {[
-                    { text: " Acesso à Plataforma Exclusiva Aldeia Singular", icon: "/icones_preço/celular.png" },
+                    { text: " Acesso à Plataforma Exclusiva<br />Aldeia Singular", icon: "/icones_preço/celular.png" },
                     { text: "+ 55 encontros ao vivo", icon: "/icones_preço/55encontros.png" },
                     { text: "+ 110h de conteúdos e conhecimento", icon: "/icones_preço/110horas.png" },
                     { text: "Curso PAPAiS Express – Programa de Apoio aos Pais de Superdotados", icon: "/icones_preço/curso_papais.png" },
@@ -457,7 +679,14 @@ export default function Home() {
                         height={24}
                         className="flex-shrink-0 w-5 h-5 md:w-6 md:h-6"
                       />
-                      <span className="text-sm md:text-base lg:text-lg">{item.text}</span>
+                      <span className="text-sm md:text-base lg:text-lg">
+                        {item.text.split("<br />").map((line, i) => (
+                          <span key={i}>
+                            {line}
+                            {i < item.text.split("<br />").length - 1 && <br />}
+                          </span>
+                        ))}
+                      </span>
                     </li>
                   ))}
                 </ul>
@@ -476,11 +705,11 @@ export default function Home() {
                 </div>
                 <div className="text-center mb-6 md:mb-8 bg-white rounded-3xl md:rounded-4xl py-4 md:py-6 px-4 md:px-6 border-2 border-[#FF7167] w-full">
                   <p className="text-xl md:text-2xl lg:text-3xl font-semibold text-[#FF7167] mb-2">
-                    POR APENAS
+                    TUDO ISSO POR APENAS
                   </p>
                   <p className="text-3xl md:text-4xl lg:text-5xl text-[#FF7167] mb-2">
                     <span className="text-xl md:text-2xl lg:text-3xl font-semibold text-[#450655]">12x de </span>
-                    <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold italic">R$ 98,00</span>
+                    <span className="text-4xl md:text-5xl lg:text-6xl font-extrabold italic">R$ 98</span>
                   </p>
                   <p className="text-base md:text-lg lg:text-xl text-[#450655]">ou R$ 947,58 à vista</p>
                 </div>
@@ -522,39 +751,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-6 md:mb-8">
-            Dúvidas frequentes
-          </h2>
-
-          <div className="space-y-3 md:space-y-4">
-            {[
-              "Como funciona o acesso à plataforma?",
-              "Os encontros são gravados?",
-              "Posso cancelar minha assinatura a qualquer momento?",
-              "O conteúdo é adequado para pais de crianças de todas as idades?",
-              "Há suporte técnico disponível?",
-              "Como posso interagir com outros pais na comunidade?"
-            ].map((question, index) => (
-              <div key={index} className="bg-[#f7f1f2] rounded-xl p-4 md:p-6 shadow-md cursor-pointer hover:shadow-lg transition-shadow border-2 border-[#FF7167]">
-                <div className="flex items-center justify-between gap-4">
-                  <p className="text-base md:text-lg font-semibold text-gray-900">{question}</p>
-                  <svg className="w-5 h-5 md:w-6 md:h-6 text-[#FF7167] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-6 md:mt-8">
-            <a href="#" className="text-[#450655] hover:text-[#450655]/80 font-semibold text-sm md:text-base">
-              Ver mais perguntas
-            </a>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* Footer */}
       <footer className="bg-gradient-to-br from-[#450655] to-[#6B1A7F] text-white py-12 md:py-16 px-4">
@@ -600,7 +797,7 @@ export default function Home() {
               A Aldeia Singular não substitui as avaliações para identificação de Altas Habilidades e Superdotação e outras Neurodivergências. Somos uma comunidade de mães e pais de filhos de AHSD, que buscam desenvolvimento pessoal, educação parental e bem-estar.
             </p>
             <p className="text-white font-bold text-sm md:text-base">
-              Desenvolvido por COEXPERTS
+              Desenvolvido por Aldeia Singular
             </p>
           </div>
         </div>
