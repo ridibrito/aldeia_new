@@ -801,7 +801,7 @@ export default function Home() {
           </div>
 
           <p className="text-white/80 mb-6 md:mb-8 text-sm md:text-base">
-                © 2024 Aldeia Singular. Todos os direitos reservados.
+                © 2025 Aldeia Singular. Todos os direitos reservados.
               </p>
           
           {/* Subrodapé */}
