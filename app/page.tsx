@@ -265,10 +265,10 @@ export default function Home() {
             src="/mobile.jpg"
             alt="Background"
             fill
-            className="object-cover object-top"
+            className="object-cover object-top mr-20 md:mr-0"
             priority
           />
-          <div className="absolute inset-0 bg-black/50"></div>
+          <div className="absolute inset-0 bg-black/70"></div>
         </div>
         
         {/* Background - Desktop */}
@@ -311,7 +311,7 @@ export default function Home() {
               </p>
               
               {/* CTA Button */}
-              <div className="pt-2">
+              <div className="pt-2 flex justify-start">
                 <a 
                   href="#precos" 
                   className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block"
@@ -326,21 +326,22 @@ export default function Home() {
 
       {/* Introduction Section */}
       <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Image */}
-          <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-[3/4] p-0 md:p-4 order-1 md:order-1">
-            <div className="relative w-full h-full scale-100 md:scale-100">
-              <Image
-                src="/segundadobra.png"
-                alt="Criança sorrindo"
-                fill
-                className="object-contain"
-              />
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+            {/* Image */}
+            <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-[3/4] p-0 md:p-4 order-1 md:order-1 w-full">
+              <div className="relative w-full h-full scale-100 md:scale-100">
+                <Image
+                  src="/segundadobra.png"
+                  alt="Criança sorrindo"
+                  fill
+                  className="object-contain"
+                />
+              </div>
             </div>
-          </div>
 
-          {/* Text Content */}
-          <div className="space-y-4 md:space-y-6 text-left order-2 md:order-2">
+            {/* Text Content */}
+            <div className="space-y-4 md:space-y-6 text-left order-2 md:order-2 w-full">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF7167] leading-tight mb-2 -mt-12 text-left">
               Para que seu filho possa brilhar, você precisa estar forte.
             </h2>
@@ -357,10 +358,11 @@ export default function Home() {
               Como você pode ser o porto-seguro do seu filho, se você também está sobrecarregado(a), incompreendido(a) e sem apoio?
             </p>
             <div className="flex justify-start">
-              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-8 md:py-4 md:px-8 rounded-full text-sm md:text-lg transition-colors shadow-lg border-2 border-white inline-block">
+              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO FAZER PARTE DA COMUNIDADE
               </a>
             </div>
+          </div>
           </div>
         </div>
       </section>
@@ -438,7 +440,7 @@ export default function Home() {
             </div>
           </div>
           <div className="text-center">
-            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-lg transition-colors shadow-lg border-2 border-white inline-block">
+            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO ESSA TRANSFORMAÇÃO
             </a>
           </div>
@@ -454,7 +456,7 @@ export default function Home() {
 
       {/* Testimonials Section */}
       <section 
-        className="py-6 md:py-12 px-0 relative"
+        className="py-6 md:py-12 px-0 relative overflow-hidden"
         style={{
           backgroundImage: 'url(/pattern.png)',
           backgroundSize: 'contain',
@@ -462,23 +464,23 @@ export default function Home() {
           backgroundRepeat: 'no-repeat'
         }}
       >
-        <div className="w-full relative z-10">
-          <div className="relative w-full">
+        <div className="w-full relative z-10 overflow-hidden">
+          <div className="relative w-full overflow-hidden">
             {/* Blur nas laterais */}
             <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-[#FFF0F5] via-[#FFF0F5]/60 to-transparent z-10 pointer-events-none"></div>
             <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-[#FFF0F5] via-[#FFF0F5]/60 to-transparent z-10 pointer-events-none"></div>
             
             {/* Primeira linha - 5 primeiros depoimentos - entra da esquerda */}
-            <div className="mb-4 md:mb-8 w-full">
+            <div className="mb-4 md:mb-8 w-full overflow-hidden">
               <Marquee pauseOnHover pauseOnTouch className="[--duration:40s] w-full" reverse={false}>
                 {depoimentos.slice(0, 5).map((num) => (
-                  <div key={num} className="flex-shrink-0 mx-4 md:mx-4">
+                  <div key={num} className="flex-shrink-0 mx-2 md:mx-4">
                     <Image
                       src={`/depoimentos/Editados/${num}.png`}
                       alt={`Depoimento ${num}`}
                       width={400}
                       height={300}
-                      className="rounded-xl md:rounded-2xl object-cover h-auto w-auto max-w-[400px] md:max-w-[400px]"
+                      className="rounded-xl md:rounded-2xl object-cover h-auto w-auto max-w-[280px] md:max-w-[400px]"
                     />
                   </div>
                 ))}
@@ -486,16 +488,16 @@ export default function Home() {
             </div>
             
             {/* Segunda linha - 5 últimos depoimentos - entra da direita */}
-            <div className="w-full">
+            <div className="w-full overflow-hidden">
               <Marquee pauseOnHover pauseOnTouch className="[--duration:40s] w-full" reverse={true}>
                 {depoimentos.slice(5, 10).map((num) => (
-                  <div key={num} className="flex-shrink-0 mx-4 md:mx-4">
+                  <div key={num} className="flex-shrink-0 mx-2 md:mx-4">
                     <Image
                       src={`/depoimentos/Editados/${num}.png`}
                       alt={`Depoimento ${num}`}
                       width={400}
                       height={300}
-                      className="rounded-xl md:rounded-2xl object-cover h-auto w-auto max-w-[400px] md:max-w-[400px]"
+                      className="rounded-xl md:rounded-2xl object-cover h-auto w-auto max-w-[280px] md:max-w-[400px]"
                     />
                   </div>
                 ))}
@@ -518,16 +520,17 @@ export default function Home() {
         </div>
 
         {/* Plataforma Autoral Exclusiva - Full Width Orange Section */}
-        <div className="w-screen bg-[#FF7167] relative overflow-hidden md:overflow-visible py-12 md:py-20 lg:py-10 -mx-4 md:mx-0">
+        <div className="w-screen bg-[#FF7167] relative overflow-visible pt-12 md:pt-20 lg:pt-10 pb-16 md:pb-24 lg:pb-20 -mx-4 md:mx-0">
           <div className="max-w-7xl mx-auto px-4">
             <div className="grid md:grid-cols-2 gap-8 md:gap-16 lg:gap-20 items-center">
               {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-video bg-transparent -mt-12 md:-my-8 lg:-my-12 order-1 md:order-1">
+              <div className="relative rounded-2xl overflow-visible aspect-video bg-transparent -mt-12 md:-my-8 lg:-my-12 order-1 md:order-1 z-20 pb-8 md:pb-12">
                 <Image
                   src="/mockup.png"
                   alt="Plataforma Desktop e Mobile"
                   fill
                   className="object-contain scale-150 md:scale-[2]"
+                  
                 />
             </div>
 
@@ -603,7 +606,7 @@ export default function Home() {
           </div>
 
           <div className="text-center">
-            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-lg transition-colors shadow-lg border-2 border-white inline-block">
+            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO ACESSAR A PLATAFORMA
             </a>
           </div>
@@ -665,7 +668,7 @@ export default function Home() {
                 <ul className="space-y-3 md:space-y-4 text-[#450655]">
                   {[
                     { text: " Acesso à Plataforma Exclusiva<br />Aldeia Singular", icon: "/icones_preço/celular.png" },
-                    { text: "+ 55 encontros ao vivo", icon: "/icones_preço/55encontros.png" },
+                    { text: "+ 50 encontros ao vivo por ano", icon: "/icones_preço/55encontros.png" },
                     { text: "+ 110h de conteúdos e conhecimento", icon: "/icones_preço/110horas.png" },
                     { text: "Curso PAPAiS Express – Programa de Apoio aos Pais de Superdotados", icon: "/icones_preço/curso_papais.png" },
                     { text: "Livros, artigos, lives e materiais complementares.", icon: "/icones_preço/livros.png" },
@@ -713,7 +716,7 @@ export default function Home() {
                   </p>
                   <p className="text-base md:text-lg lg:text-xl text-[#450655]">ou R$ 947,58 à vista</p>
                 </div>
-                <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-4 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors w-full max-w-md shadow-lg border-2 border-white inline-block text-center whitespace-nowrap">
+                <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors w-full max-w-md shadow-lg border-2 border-white inline-block text-center whitespace-nowrap">
                  ENTRAR PARA A ALDEIA SINGULAR
                 </a>
                 <div className="mt-4 md:mt-6 flex flex-col items-center">
@@ -749,7 +752,7 @@ export default function Home() {
             <p><span className="text-[#F9B214]">Filhos</span> compreendidos.</p>
             <p><span className="text-[#F9B214]">Lares</span> fortalecidos.</p>
           </div>
-          <a href="#precos" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-lg transition-colors shadow-lg border-2 border-white inline-block">
+          <a href="#precos" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
             QUERO ENTRAR PARA A ALDEIA SINGULAR
           </a>
         </div>
@@ -794,7 +797,7 @@ export default function Home() {
               href="#precos"
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-2 px-4 md:py-3 md:px-6 rounded-full text-sm md:text-base transition-colors shadow-lg border-2 border-white inline-block"
+              className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block"
             >
               ENTRAR PARA A ALDEIA SINGULAR
             </a>
