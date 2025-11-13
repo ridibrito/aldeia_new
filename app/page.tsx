@@ -86,7 +86,7 @@ function FAQSection() {
     },
     {
       question: "E se meu filho tiver dupla condição ou dupla excepcionalidade (como AHSD + TDAH ou TEA)?",
-      answer: "Sim. Esses temas são tratados em nossas trilhas de conhecimento e encontros com especialistas."
+      answer: "Esses temas são tratados em nossas trilhas de conhecimento e encontros com especialistas e fazem parte do conteúdo teórico e prático abordados na Aldeia Singular."
     },
     {
       question: "Os conteúdos têm base científica?",
@@ -355,7 +355,7 @@ export default function Home() {
               Quem cuida de você?
             </h3>
             <p className="text-base md:text-lg text-gray-700 leading-relaxed text-left">
-              Como você pode ser o porto-seguro do seu filho, se você também está sobrecarregado(a), incompreendido(a) e sem apoio?
+              Como você pode ser o porto-seguro do seu filho, se você também está sobrecarregada, incompreendida e sem apoio?
             </p>
             <div className="flex justify-start">
               <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
@@ -385,11 +385,11 @@ export default function Home() {
               </div>
               <ul className="space-y-3 md:space-y-4">
                 {[
-                  "...angustiada(o) com a intensidade emocional e a hipersensibilidade do seu filho, sem saber como agir ou acalmar.",
-                  "...esgotada(o) de lutar com a escola, que rotula seu filho como \"birrento\", \"desatento\" ou \"antissocial\".",
-                  "...perdida(o) e sobrecarregada(a) com o excesso de informações duvidosas e a dificuldade de encontrar profissionais confiáveis.",
+                  "...angustiada com a intensidade emocional e a supersensibilidade do seu filho, sem saber como agir ou acalmar.",
+                  "...esgotada de lutar com a escola, que rotula seu filho como \"birrento\", \"desatento\" ou \"antissocial\".",
+                  "...perdida e sobrecarregada com o excesso de informações duvidosas e a dificuldade de encontrar profissionais confiáveis.",
                   "Com medo de ver o potencial brilhante do seu filho se transformar em frustração, tristeza ou apatia.",
-                  "Completamente sozinha(o), mesmo rodeada(o) de pessoas, por ninguém entender o que você realmente passa."
+                  "Completamente sozinha, mesmo rodeada de pessoas, por ninguém entender o que você realmente passa."
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-2 md:gap-3">
                     <Image 
@@ -422,7 +422,7 @@ export default function Home() {
                   "...encontra aulas, trilhas e encontros ao vivo com a Dra. Angela para decodificar essa intensidade, transformando o que parecia \"difícil\" em potência e conexão.",
                   "...ganha ferramentas e guias práticos para \"falar a língua\" da escola, sabendo escolher o ambiente, exatamente o que pedir e como construir uma parceria que funcione.",
                   "...encontra um caminho seguro, um acervo de conhecimento validado por uma das maiores especialistas do Brasil e uma rede de profissionais indicados pela comunidade.",
-                  "...aprende a nutrir a singularidade dele, ganhando confiança para tomar as decisões certas que garantem um futuro saudável e feliz.",
+                  "...aprende a nutrir a singularidade do seu filho, ganhando confiança para tomar as decisões certas que garantem um futuro saudável e feliz.",
                   "...encontra sua tribo. Um acolhimento imediato na nossa comunidade 24/7, onde você é compreendida antes mesmo de terminar de falar."
                 ].map((item, index) => (
                   <li key={index} className="flex items-start gap-2 md:gap-3">
@@ -541,7 +541,7 @@ export default function Home() {
                 Cansados de portais de cursos genéricos, construímos a plataforma da Aldeia Singular do zero.
                 O resultado é um ecossistema pensado para cada detalhe da sua jornada, unindo o conhecimento profundo da Dra. Angela Virgolim com a organização e a facilidade que você merece.                </p>
                 <p className="text-base md:text-lg text-white leading-relaxed">
-                Chega de se sentir perdido(a) em um mar de informações soltas ou em grupos de WhatsApp onde o conteúdo se perde.                </p>
+                Chega de se sentir perdida em um mar de informações soltas ou em grupos de WhatsApp onde o conteúdo se perde.                </p>
               </div>
             </div>
           </div>
