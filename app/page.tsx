@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
 import { Marquee } from "./components/marquee";
-import CardsCarousel from "./components/CardsCarousel";
 import { useState } from "react";
 
 function FAQSection() {
@@ -555,9 +554,49 @@ export default function Home() {
             Você encontra tudo de forma intuitiva em um só lugar:
           </h2>
 
-          {/* Mobile Carousel */}
-          <div className="md:hidden mb-8 md:mb-12">
-            <CardsCarousel cards={cardsData} />
+          {/* Mobile Stack */}
+          <div className="md:hidden mb-8 md:mb-12 flex flex-col gap-6">
+            {cardsData.map((card, index) => (
+              <div
+                key={index}
+                className="relative rounded-3xl p-6 shadow-lg border-2 border-[#FF7167] overflow-hidden min-h-[350px]"
+              >
+                <Image
+                  src={card.image}
+                  alt=""
+                  fill
+                  className={`object-cover scale-110 ${card.imagePosition || ""}`}
+                />
+                <div className="absolute inset-0 bg-black/70"></div>
+                <div className="relative z-10 text-center h-full flex flex-col justify-center">
+                  <div className="mb-4 flex justify-center">
+                    <Image
+                      src={card.icon}
+                      alt=""
+                      width={80}
+                      height={80}
+                      className={`h-16 w-16 object-contain ${card.iconOpacity || ""}`}
+                    />
+                  </div>
+                  <h3 className="text-2xl font-bold text-[#FF7167] mb-3">
+                    {card.title.split("<br />").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        {i < card.title.split("<br />").length - 1 && <br />}
+                      </span>
+                    ))}
+                  </h3>
+                  <p className="text-sm text-white leading-relaxed">
+                    {card.description.split("<br />").map((line, i) => (
+                      <span key={i}>
+                        {line}
+                        {i < card.description.split("<br />").length - 1 && <br />}
+                      </span>
+                    ))}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
 
           {/* Desktop Grid */}
@@ -716,7 +755,7 @@ export default function Home() {
                   </p>
                   <p className="text-base md:text-lg lg:text-xl text-[#450655]">ou R$ 947,58 à vista</p>
                 </div>
-                <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors w-full max-w-md shadow-lg border-2 border-white inline-block text-center whitespace-nowrap">
+                <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors w-full max-w-md shadow-lg border-2 border-white inline-block text-center whitespace-nowrap">
                  ENTRAR PARA A ALDEIA SINGULAR
                 </a>
                 <div className="mt-4 md:mt-6 flex flex-col items-center">
