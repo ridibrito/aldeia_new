@@ -791,7 +791,7 @@ export default function Home() {
             <p><span className="text-[#F9B214]">Filhos</span> compreendidos.</p>
             <p><span className="text-[#F9B214]">Lares</span> fortalecidos.</p>
           </div>
-          <a href="#precos" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
+          <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
             QUERO ENTRAR PARA A ALDEIA SINGULAR
           </a>
         </div>
@@ -833,7 +833,7 @@ export default function Home() {
               <span>Fale conosco</span>
             </a>
             <a
-              href="#precos"
+              href="https://pay.hotmart.com/L102866611N"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block"
