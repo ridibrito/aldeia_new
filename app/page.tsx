@@ -310,14 +310,14 @@ export default function Home() {
               </p>
               
               {/* CTA Button */}
-              <div className="pt-2 flex justify-start">
+              {/* <div className="pt-2 flex justify-start">
                 <a 
                   href="#precos" 
                   className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block"
                 >
                   QUERO FAZER PARTE DA COMUNIDADE
                 </a>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
@@ -356,11 +356,11 @@ export default function Home() {
             <p className="text-base md:text-lg text-gray-700 leading-relaxed text-left">
               Como você pode ser o porto-seguro do seu filho, se você também está sobrecarregada, incompreendida e sem apoio?
             </p>
-            <div className="flex justify-start">
+            {/* <div className="flex justify-start">
               <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO FAZER PARTE DA COMUNIDADE
               </a>
-            </div>
+            </div> */}
           </div>
           </div>
         </div>
@@ -438,11 +438,11 @@ export default function Home() {
               </ul>
             </div>
           </div>
-          <div className="text-center">
+          {/* <div className="text-center">
             <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO ESSA TRANSFORMAÇÃO
             </a>
-          </div>
+          </div> */}
         </div>
       </section>
 
@@ -644,11 +644,11 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="text-center">
+          {/* <div className="text-center">
             <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
               QUERO ACESSAR A PLATAFORMA
             </a>
-          </div>
+          </div> */}
         </div>
       </section>
 
