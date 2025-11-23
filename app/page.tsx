@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
 import { Marquee } from "./components/marquee";
+import { ShimmerButton } from "./components/ui/shimmer-button";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -355,11 +356,11 @@ export default function Home() {
         {/* Main Content */}
         <div className="relative z-20 w-full max-w-5xl mx-auto px-4 md:px-6 lg:px-8 flex-1 flex items-center py-12 md:py-16 lg:py-20">
           <div className="w-full">
-            <div className="text-center space-y-8 md:space-y-12">
+            <div className="text-center space-y-6 md:space-y-12">
               {/* Logo */}
               <div className="flex justify-center">
                 <Image
-                  src="/logo.png"
+                  src="/amarela.png"
                   alt="Aldeia Singular"
                   width={200}
                   height={60}
@@ -370,10 +371,21 @@ export default function Home() {
               
               {/* Heading */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent">
-                  A jornada com um filho <span className="underline decoration-[#FF7167] decoration-2 underline-offset-4">AHSD</span> não precisa ser solitária.
+                <span className="text-[#FFAF24]">
+                  A jornada com um filho <span className="text-[#FF7167] underline decoration-[#FF7167] decoration-2 underline-offset-4">AHSD</span> não precisa ser solitária.
                 </span>
               </h1>
+              
+              {/* Subtítulo */}
+              <div className="flex justify-center">
+                <ShimmerButton
+                  borderRadius="100px"
+                  shimmerDuration="3s"
+                  className="font-semibold text-sm md:text-base"
+                >
+                  Assista ao vídeo antes de seguir
+                </ShimmerButton>
+              </div>
               
               {/* Video da Dra. Angela */}
               <div className="w-full max-w-4xl mx-auto">
@@ -948,7 +960,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-4 md:mb-6 flex justify-center">
             <Image
-                  src="/logo.png"
+                  src="/amarela.png"
                   alt="Aldeia Singular"
                   width={180}
                   height={54}

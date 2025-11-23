@@ -4,6 +4,7 @@ import Image from "next/image";
 import { HeroVideoDialog } from "../components/ui/hero-video-dialog";
 import { Marquee } from "../components/marquee";
 import CardsCarousel from "../components/CardsCarousel";
+import { ShimmerButton } from "../components/ui/shimmer-button";
 import { useState } from "react";
 
 function FAQSection() {
@@ -346,7 +347,7 @@ export default function Apontar() {
               {/* Logo */}
               <div className="flex justify-center">
                 <Image
-                  src="/logo.png"
+                  src="/amarela.png"
                   alt="Aldeia Singular"
                   width={200}
                   height={60}
@@ -357,10 +358,21 @@ export default function Apontar() {
               
               {/* Heading */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
-                <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent">
-                  A jornada com um filho <span className="underline decoration-[#FF7167] decoration-2 underline-offset-4">AHSD</span> não precisa ser solitária.
+                <span className="text-[#FFAF24]">
+                  A jornada com um filho <span className="text-[#FF7167] underline decoration-[#FF7167] decoration-2 underline-offset-4">AHSD</span> não precisa ser solitária.
                 </span>
               </h1>
+              
+              {/* Subtítulo */}
+              <div className="flex justify-center mt-2 mb-4">
+                <ShimmerButton
+                  borderRadius="100px"
+                  shimmerDuration="3s"
+                  className="font-semibold text-sm md:text-base"
+                >
+                  Assista ao vídeo antes de seguir
+                </ShimmerButton>
+              </div>
               
               {/* Video da Dra. Angela */}
               <div className="w-full max-w-4xl mx-auto">
@@ -837,7 +849,7 @@ export default function Apontar() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-4 md:mb-6 flex justify-center">
             <Image
-                  src="/logo.png"
+                  src="/amarela.png"
                   alt="Aldeia Singular"
                   width={180}
                   height={54}
