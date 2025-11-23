@@ -536,25 +536,15 @@ export default function Apontar() {
         {/* Plataforma Autoral Exclusiva - Full Width Orange Section */}
         <div className="w-screen bg-[#FF7167] relative overflow-hidden md:overflow-visible py-12 md:py-20 lg:py-10 -mx-4 md:mx-0">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid md:grid-cols-2 gap-8 md:gap-16 lg:gap-20 items-center">
-              {/* Image */}
-              <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-video bg-transparent -mt-12 md:-my-8 lg:-my-12 order-1 md:order-1">
-                <Image
-                  src="/mockup.png"
-                  alt="Plataforma Desktop e Mobile"
-                  fill
-                  className="object-contain scale-150 md:scale-[2]"
+            <div className="flex justify-center items-center">
+              {/* Video */}
+              <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-video bg-transparent w-full max-w-4xl">
+                <HeroVideoDialog
+                  videoSrc="https://player.vimeo.com/video/1139764781?autoplay=1"
+                  thumbnailSrc="/mockup.png"
+                  thumbnailAlt="Plataforma Desktop e Mobile - Aldeia Singular"
+                  animationStyle="from-center"
                 />
-            </div>
-
-            {/* Text Content */}
-              <div className="space-y-4 md:space-y-6 order-2 md:order-2 text-center md:text-left">
-                <h3 className="text-2xl md:text-3xl font-bold text-[#450655]">Plataforma Exclusiva</h3>
-                <p className="text-base md:text-lg text-white leading-relaxed">
-                Cansados de portais de cursos genéricos, construímos a plataforma da Aldeia Singular do zero.
-                O resultado é um ecossistema pensado para cada detalhe da sua jornada, unindo o conhecimento profundo da Dra. Angela Virgolim com a organização e a facilidade que você merece.                </p>
-                <p className="text-base md:text-lg text-white leading-relaxed">
-                Chega de se sentir perdido(a) em um mar de informações soltas ou em grupos de WhatsApp onde o conteúdo se perde.                </p>
               </div>
             </div>
           </div>
