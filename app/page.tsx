@@ -3,7 +3,8 @@
 import Image from "next/image";
 import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
 import { Marquee } from "./components/marquee";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 function FAQSection() {
   const [showMore, setShowMore] = useState(false);
@@ -211,7 +212,100 @@ function FAQSection() {
 }
 
 export default function Home() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const depoimentos = Array.from({ length: 10 }, (_, i) => i + 1);
+
+  // Suporte para swipe em mobile
+  const minSwipeDistance = 50;
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      setCurrentTestimonial((prev) => (prev === depoimentosTextos.length - 1 ? 0 : prev + 1));
+    }
+    if (isRightSwipe) {
+      setCurrentTestimonial((prev) => (prev === 0 ? depoimentosTextos.length - 1 : prev - 1));
+    }
+  };
+  
+  // Depoimentos reais com textos do depoimentos.md - Todos os 10
+  const depoimentosTextos = [
+    {
+      texto: "Amo te ouvir! Sempre aprendo! Muito bom ter a oportunidade de estar ao seu lado! Obrigada pela generosidade de compartilhar seu conhecimento!",
+      autor: "@aceciliamelo",
+      imagem: 1,
+      destaque: true
+    },
+    {
+      texto: "Construiu sólidas contribuições em documentos oficiais, escreveu livros, teóricos e de práticas, formou e forma profissionais e, continua atuante por meio da práxis a relevante função de atender, ensinar, enriquecer",
+      autor: "@biacamposlara",
+      imagem: 2,
+      destaque: false
+    },
+    {
+      texto: "Maravilhosa! Pioneira nos estudos das AH/SD no Brasil! Autoridade no assunto! Você me inspira muito, querida! Muito mesmo!",
+      autor: "@synapsis_neuroaprendizagem",
+      imagem: 3,
+      destaque: true
+    },
+    {
+      texto: "Tem sido maravilhoso acompanhar seu conteúdo aqui e poder compartilhar nos grupos de pais. Minha admiração, brotada da leitura de alguns dos seus escritos - robustos, claros e de ampla visão - só aumenta! Obrigada por essa importante iniciativa!",
+      autor: "@acarolinaina",
+      imagem: 4,
+      destaque: false
+    },
+    {
+      texto: "Tão maravilhosa! Tive o prazer de fazer o curso com aquela riqueza do pipocas. Mudei muito minha prática em sala de recursos e também meu comportamento com meu filho. A história teve novos rumos com mais alegria e criatividade por aqui depois de te conhecer.",
+      autor: "@mcececipsividalev",
+      imagem: 5,
+      destaque: true
+    },
+    {
+      texto: "Maravilhosa!! Excelente profissional e pessoa excepcional!! Agradeço todos os ensinamentos e por ter cruzado meu caminho!",
+      autor: "@gabrielicorcino",
+      imagem: 6,
+      destaque: false
+    },
+    {
+      texto: "Dra. Ângela dentre todas as coisas que já foram ditas destaco sua amabilidade, simplesmente e afetividade que aliadas à ciência produzem resultados muito maiores. Grande beijo!!",
+      autor: "@helenssanz",
+      imagem: 7,
+      destaque: true
+    },
+    {
+      texto: "Uma grande amiga do Programa de Atendimento às Altas Habilidades da Secretaria de Educação do DF! Sempre presente na formação dos profissionais que atuam nas salas de recursos da rede pública. Temos muita gratidão e admiração por você!",
+      autor: "@superdotacao_em_casa",
+      imagem: 8,
+      destaque: false
+    },
+    {
+      texto: "Que belíssima trajetória! Uma profissional que reúne a profundidade teórica, a aplicabilidade dos conceitos e, principalmente, a sensibilidade na condução e orientação de pais, professores e crianças para que possam compreender as AHSD e colocá-la a serviço da vida. Sou eternamente grata pelos ensinamentos recebidos.",
+      autor: "@psimellissafguimaraes",
+      imagem: 9,
+      destaque: true
+    },
+    {
+      texto: "Que linda a sua trajetória! Vejo a grande necessidade desse apoio às famílias de crianças e jovens AH/SD. Parabéns Dra. Ângela pelo belo trabalho que desenvolveu nessa área. Sou admiradora sua e leitora dos seus livros e materiais sobre AH/SD.",
+      autor: "@juliana_fac",
+      imagem: 10,
+      destaque: false
+    }
+  ];
 
   const cardsData = [
     {
@@ -257,38 +351,13 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f7f1f2] overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col overflow-hidden">
-        {/* Background - Mobile */}
-        <div className="absolute inset-0 z-0 md:hidden">
-          <Image
-            src="/mobile.jpg"
-            alt="Background"
-            fill
-            className="object-cover object-top mr-20 md:mr-0"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/70"></div>
-        </div>
-        
-        {/* Background - Desktop */}
-        <div className="hidden md:block absolute inset-0 z-0">
-          <Image
-            src="/imagehero.png"
-            alt="Background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/30"></div>
-        </div>
-        
+      <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col overflow-hidden bg-[#f7f1f2]">
         {/* Main Content */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex-1 flex items-center py-12 md:py-16 lg:py-20">
+        <div className="relative z-20 w-full max-w-5xl mx-auto px-4 md:px-6 lg:px-8 flex-1 flex items-center py-12 md:py-16 lg:py-20">
           <div className="w-full">
-            {/* Content Container */}
-            <div className="text-left space-y-6 md:space-y-8 max-w-3xl">
+            <div className="text-center space-y-8 md:space-y-12">
               {/* Logo */}
-              <div>
+              <div className="flex justify-center">
                 <Image
                   src="/logo.png"
                   alt="Aldeia Singular"
@@ -300,208 +369,312 @@ export default function Home() {
               </div>
               
               {/* Heading */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
-                A jornada com um filho <span className="text-[#FF7167]">AHSD</span> não precisa ser solitária.
+              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent">
+                  A jornada com um filho <span className="underline decoration-[#FF7167] decoration-2 underline-offset-4">AHSD</span> não precisa ser solitária.
+                </span>
               </h1>
               
-              {/* Subtitle */}
-              <p className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed">
-                A Aldeia Singular é uma comunidade que <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent font-semibold">acolhe e fortalece mães e pais de crianças e adolescentes com Altas Habilidades e Superdotação</span>, identificados ou em processo de identificação. Criada e guiada pela Dra. Angela Virgolim, <span className="font-bold italic">é um espaço de pertencimento, aprendizado e transformação.</span>
-              </p>
-              
-              {/* CTA Button */}
-              {/* <div className="pt-2 flex justify-start">
-                <a 
-                  href="#precos" 
-                  className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block"
-                >
-                  QUERO FAZER PARTE DA COMUNIDADE
-                </a>
-              </div> */}
+              {/* Video da Dra. Angela */}
+              <div className="w-full max-w-4xl mx-auto">
+                <HeroVideoDialog
+                  videoSrc="https://player.vimeo.com/video/1135528791?autoplay=1"
+                  thumbnailSrc="/thumb.jpg"
+                  thumbnailAlt="Apresentação da Dra. Angela Virgolim"
+                  animationStyle="from-center"
+                />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Introduction Section */}
-      <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-col md:grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-            {/* Image */}
-            <div className="relative rounded-2xl overflow-hidden md:overflow-visible aspect-[3/4] p-0 md:p-4 order-1 md:order-1 w-full">
-              <div className="relative w-full h-full scale-100 md:scale-100">
-                <Image
-                  src="/segundadobra.png"
-                  alt="Criança sorrindo"
-                  fill
-                  className="object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Text Content */}
-            <div className="space-y-4 md:space-y-6 text-left order-2 md:order-2 w-full">
-            <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#FF7167] leading-tight mb-2 -mt-12 text-left">
-              Para que seu filho possa brilhar, você precisa estar forte.
+      {/* DOBRA 2: A Ponte Emocional */}
+      <section className="py-12 md:py-20 px-6 bg-white">
+        <div className="max-w-3xl mx-auto">
+          <div className="space-y-6 text-left">
+            {/* Título Principal */}
+            <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight">
+              Para que seu filho possa brilhar, <span className="text-[#FF7167]">você precisa estar forte.</span>
             </h2>
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed text-left">
-              A jornada com Altas Habilidades é desafiadora: identificar os sinais, encontrar profissionais confiáveis, enfrentar preconceito na escola, falta de apoio familiar. É solidão, incerteza e <strong>gastos</strong> que não param.
+            
+            {/* Texto de Apoio */}
+            <p className="text-base md:text-lg text-gray-700 leading-relaxed" style={{ lineHeight: '1.6' }}>
+              A jornada com Altas Habilidades é desafiadora. Identificar os sinais é apenas o começo; a verdadeira batalha acontece no dia a dia, quando a teoria encontra a realidade.
             </p>
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed text-left">
-              No meio dessa batalha diária, descobrimos a peça que faltava:
+            
+            {/* Gancho Final */}
+            <p className="text-lg md:text-xl text-gray-900 font-bold italic">
+              Se você se identifica com as situações abaixo, a Aldeia foi feita para você:
             </p>
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-[#FF7167] text-left">
-              Quem cuida de você?
-            </h3>
-            <p className="text-base md:text-lg text-gray-700 leading-relaxed text-left">
-              Como você pode ser o porto-seguro do seu filho, se você também está sobrecarregada, incompreendida e sem apoio?
-            </p>
-            {/* <div className="flex justify-start">
-              <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
-              QUERO FAZER PARTE DA COMUNIDADE
-              </a>
-            </div> */}
-          </div>
           </div>
         </div>
       </section>
 
-      {/* Comparison Section */}
+      {/* DOBRA 3: O "Sanduíche de Solução" */}
+      <section className="py-12 md:py-20 px-6 bg-[#f7f1f2]">
+        <div className="max-w-2xl mx-auto space-y-8">
+          
+          {/* Par 1: Escola */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            {/* A Dor */}
+            <div className="bg-red-50 border-l-4 border-red-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✕
+                </div>
+                <p className="text-gray-900 text-base md:text-lg leading-relaxed font-medium">
+                  Cansada de lutar com a escola que rotula seu filho como "birrento" ou "desatento"?
+                </p>
+              </div>
+            </div>
+            
+            {/* Seta de Transição */}
+            <div className="flex justify-center bg-white py-2">
+              <div className="text-3xl text-[#FF7167]">⬇</div>
+            </div>
+            
+            {/* A Solução */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✓
+                </div>
+                <div>
+                  <p className="text-[#450655] font-bold text-sm uppercase tracking-wide mb-2">Na Aldeia</p>
+                  <p className="text-gray-900 text-base md:text-lg leading-relaxed">
+                    Você ganha guias práticos para "falar a língua" da escola e construir uma parceria que funcione.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Par 2: Emoções */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            {/* A Dor */}
+            <div className="bg-red-50 border-l-4 border-red-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✕
+                </div>
+                <p className="text-gray-900 text-base md:text-lg leading-relaxed font-medium">
+                  Angustiada com a intensidade emocional dele e sem saber como acalmar?
+                </p>
+              </div>
+            </div>
+            
+            {/* Seta de Transição */}
+            <div className="flex justify-center bg-white py-2">
+              <div className="text-3xl text-[#FF7167]">⬇</div>
+            </div>
+            
+            {/* A Solução */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✓
+                </div>
+                <div>
+                  <p className="text-[#450655] font-bold text-sm uppercase tracking-wide mb-2">Na Aldeia</p>
+                  <p className="text-gray-900 text-base md:text-lg leading-relaxed">
+                    Aulas diretas com a Dra. Angela para decodificar essa intensidade e gerar conexão real.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Par 3: Solidão */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            {/* A Dor */}
+            <div className="bg-red-50 border-l-4 border-red-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✕
+                </div>
+                <p className="text-gray-900 text-base md:text-lg leading-relaxed font-medium">
+                  Sentindo-se sozinha, rodeada de pessoas que não entendem o que você passa?
+                </p>
+              </div>
+            </div>
+            
+            {/* Seta de Transição */}
+            <div className="flex justify-center bg-white py-2">
+              <div className="text-3xl text-[#FF7167]">⬇</div>
+            </div>
+            
+            {/* A Solução */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✓
+                </div>
+                <div>
+                  <p className="text-[#450655] font-bold text-sm uppercase tracking-wide mb-2">Na Aldeia</p>
+                  <p className="text-gray-900 text-base md:text-lg leading-relaxed">
+                    Uma tribo 24/7. Você será compreendida antes mesmo de terminar de falar.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Par 4: Confiança */}
+          <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
+            {/* A Dor */}
+            <div className="bg-red-50 border-l-4 border-red-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-red-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✕
+                </div>
+                <p className="text-gray-900 text-base md:text-lg leading-relaxed font-medium">
+                  Perdida no excesso de informações duvidosas da internet?
+                </p>
+              </div>
+            </div>
+            
+            {/* Seta de Transição */}
+            <div className="flex justify-center bg-white py-2">
+              <div className="text-3xl text-[#FF7167]">⬇</div>
+            </div>
+            
+            {/* A Solução */}
+            <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-xl">
+                  ✓
+                </div>
+                <div>
+                  <p className="text-[#450655] font-bold text-sm uppercase tracking-wide mb-2">Na Aldeia</p>
+                  <p className="text-gray-900 text-base md:text-lg leading-relaxed">
+                    Um caminho seguro com conhecimento validado por uma das maiores especialistas do Brasil.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* Testimonials Section - Carrossel */}
       <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 border-2 md:border-4 border-[#FF7167] rounded-2xl md:rounded-3xl overflow-hidden mb-8 md:mb-12">
-            {/* Left Card - Problems */}
-            <div className="bg-[#450655] p-4 md:p-8 border-b-2 md:border-b-0 md:border-r-4 border-[#FF7167]">
-              <h3 className="text-xl md:text-3xl lg:text-5xl font-bold text-white mb-2 text-center">Se você se sente...</h3>
-              <div className="flex justify-center mb-4 md:mb-6">
-                <Image 
-                  src="/sublinhado.png" 
-                  alt="" 
-                  width={500} 
-                  height={8}
-                  className="h-auto w-full max-w-[300px] md:max-w-[500px]"
+        <div className="max-w-4xl mx-auto">
+          {/* Title */}
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-8 md:mb-12 leading-tight">
+            O que acontece quando você finalmente <span className="text-[#FF7167]">encontra sua tribo...</span>
+          </h2>
+
+          {/* Carrossel Container */}
+          <div 
+            className="relative"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+          >
+            {/* Card do Depoimento Atual com Animações */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentTestimonial}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+                className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border-2 border-[#FF7167]/30 p-6 md:p-8 min-h-[400px] md:min-h-[450px] flex flex-col"
+              >
+                {/* Ícone de aspas */}
+                <div className="absolute top-4 left-4 text-[#FF7167]/20">
+                  <svg className="w-12 h-12 md:w-16 md:h-16" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                  </svg>
+                </div>
+
+                {/* Badge decorativo */}
+                <div className="absolute top-4 right-4 bg-[#FF7167] text-white px-3 py-1.5 rounded-full text-xs font-semibold shadow-lg">
+                  ⭐ Depoimento Real
+                </div>
+
+                {/* Conteúdo do depoimento */}
+                <div className="relative pt-16 md:pt-20 flex-1 flex flex-col justify-between">
+                  <motion.p 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ delay: 0.1 }}
+                    className="text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed mb-6 font-medium flex-1"
+                  >
+                    "{depoimentosTextos[currentTestimonial].texto}"
+                  </motion.p>
+                  
+                  {/* Autor */}
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 }}
+                    className="flex items-center gap-3 pt-4 border-t-2 border-[#FF7167]/20"
+                  >
+                    <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-[#FF7167] flex-shrink-0">
+                      <Image
+                        src={`/depoimentos/Editados/${depoimentosTextos[currentTestimonial].imagem}.png`}
+                        alt={depoimentosTextos[currentTestimonial].autor}
+                        width={56}
+                        height={56}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <div>
+                      <p className="text-[#450655] font-semibold text-sm md:text-base">
+                        {depoimentosTextos[currentTestimonial].autor}
+                      </p>
+                    </div>
+                  </motion.div>
+                </div>
+              </motion.div>
+            </AnimatePresence>
+
+            {/* Botões de Navegação */}
+            <motion.button
+              onClick={() => setCurrentTestimonial((prev) => (prev === 0 ? depoimentosTextos.length - 1 : prev - 1))}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-[#FF7167] w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center z-10 backdrop-blur-sm"
+              aria-label="Depoimento anterior"
+            >
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </motion.button>
+
+            <motion.button
+              onClick={() => setCurrentTestimonial((prev) => (prev === depoimentosTextos.length - 1 ? 0 : prev + 1))}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-white/90 hover:bg-white text-[#FF7167] w-10 h-10 md:w-12 md:h-12 rounded-full shadow-lg flex items-center justify-center z-10 backdrop-blur-sm"
+              aria-label="Próximo depoimento"
+            >
+              <svg className="w-5 h-5 md:w-6 md:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </motion.button>
+
+            {/* Indicadores */}
+            <div className="flex justify-center gap-2 mt-6">
+              {depoimentosTextos.map((_, index) => (
+                <motion.button
+                  key={index}
+                  onClick={() => setCurrentTestimonial(index)}
+                  whileHover={{ scale: 1.2 }}
+                  whileTap={{ scale: 0.9 }}
+                  animate={{
+                    width: index === currentTestimonial ? 32 : 8,
+                    backgroundColor: index === currentTestimonial ? '#FF7167' : '#D1D5DB'
+                  }}
+                  transition={{ duration: 0.3 }}
+                  className="h-2 rounded-full cursor-pointer"
+                  aria-label={`Ir para depoimento ${index + 1}`}
                 />
-              </div>
-              <ul className="space-y-3 md:space-y-4">
-                {[
-                  "...angustiada com a intensidade emocional e a supersensibilidade do seu filho, sem saber como agir ou acalmar.",
-                  "...esgotada de lutar com a escola, que rotula seu filho como \"birrento\", \"desatento\" ou \"antissocial\".",
-                  "...perdida e sobrecarregada com o excesso de informações duvidosas e a dificuldade de encontrar profissionais confiáveis.",
-                  "Com medo de ver o potencial brilhante do seu filho se transformar em frustração, tristeza ou apatia.",
-                  "Completamente sozinha, mesmo rodeada de pessoas, por ninguém entender o que você realmente passa."
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-2 md:gap-3">
-                    <Image 
-                      src="/nocheck.png" 
-                      alt="" 
-                      width={24} 
-                      height={24} 
-                      className="flex-shrink-0 mt-1 w-5 h-5 md:w-6 md:h-6"
-                    />
-                    <span className="text-white text-sm md:text-lg">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              ))}
             </div>
-
-            {/* Right Card - Solutions */}
-            <div className="bg-[#450655] p-4 md:p-8">
-              <h3 className="text-xl md:text-3xl lg:text-5xl font-bold text-[#FF7167] mb-2 text-center">Na Aldeia você...</h3>
-              <div className="flex justify-center mb-4 md:mb-6">
-                <Image 
-                  src="/sublinhado.png" 
-                  alt="" 
-                  width={500} 
-                  height={8}
-                  className="h-auto w-full max-w-[300px] md:max-w-[500px]"
-                />
-              </div>
-              <ul className="space-y-3 md:space-y-4">
-                {[
-                  "...encontra aulas, trilhas e encontros ao vivo com a Dra. Angela para decodificar essa intensidade, transformando o que parecia \"difícil\" em potência e conexão.",
-                  "...ganha ferramentas e guias práticos para \"falar a língua\" da escola, sabendo escolher o ambiente, exatamente o que pedir e como construir uma parceria que funcione.",
-                  "...encontra um caminho seguro, um acervo de conhecimento validado por uma das maiores especialistas do Brasil e uma rede de profissionais indicados pela comunidade.",
-                  "...aprende a nutrir a singularidade do seu filho, ganhando confiança para tomar as decisões certas que garantem um futuro saudável e feliz.",
-                  "...encontra sua tribo. Um acolhimento imediato na nossa comunidade 24/7, onde você é compreendida antes mesmo de terminar de falar."
-                ].map((item, index) => (
-                  <li key={index} className="flex items-start gap-2 md:gap-3">
-                    <Image 
-                      src="/check.png" 
-                      alt="" 
-                      width={24} 
-                      height={24} 
-                      className="flex-shrink-0 mt-1 w-5 h-5 md:w-6 md:h-6"
-                    />
-                    <span className="text-white text-sm md:text-lg">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          {/* <div className="text-center">
-            <a href="#precos" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block">
-              QUERO ESSA TRANSFORMAÇÃO
-            </a>
-          </div> */}
-        </div>
-      </section>
-
-      {/* Testimonials Section Title */}
-      <div className="max-w-7xl mx-auto px-4 py-4 md:py-6">
-        <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 text-center mb-0 leading-tight">
-          O que acontece quando você finalmente <span className="text-[#FF7167]">encontra sua tribo...</span>
-        </h2>
-      </div>
-
-      {/* Testimonials Section */}
-      <section 
-        className="py-6 md:py-12 px-0 relative overflow-hidden"
-        style={{
-          backgroundImage: 'url(/pattern.png)',
-          backgroundSize: 'contain',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
-      >
-        <div className="w-full relative z-10 overflow-hidden">
-          <div className="relative w-full overflow-hidden">
-            {/* Blur nas laterais */}
-            <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-[#FFF0F5] via-[#FFF0F5]/60 to-transparent z-10 pointer-events-none"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-[#FFF0F5] via-[#FFF0F5]/60 to-transparent z-10 pointer-events-none"></div>
-            
-            {/* Primeira linha - 5 primeiros depoimentos - entra da esquerda */}
-            <div className="mb-4 md:mb-8 w-full overflow-hidden">
-              <Marquee pauseOnHover pauseOnTouch className="[--duration:40s] w-full" reverse={false}>
-                {depoimentos.slice(0, 5).map((num) => (
-                  <div key={num} className="flex-shrink-0 mx-2 md:mx-4">
-                    <Image
-                      src={`/depoimentos/Editados/${num}.png`}
-                      alt={`Depoimento ${num}`}
-                      width={400}
-                      height={300}
-                      className="rounded-xl md:rounded-2xl object-cover h-auto w-auto max-w-[280px] md:max-w-[400px]"
-                    />
-                  </div>
-                ))}
-              </Marquee>
-            </div>
-            
-            {/* Segunda linha - 5 últimos depoimentos - entra da direita */}
-            <div className="w-full overflow-hidden">
-              <Marquee pauseOnHover pauseOnTouch className="[--duration:40s] w-full" reverse={true}>
-                {depoimentos.slice(5, 10).map((num) => (
-                  <div key={num} className="flex-shrink-0 mx-2 md:mx-4">
-                    <Image
-                      src={`/depoimentos/Editados/${num}.png`}
-                      alt={`Depoimento ${num}`}
-                      width={400}
-                      height={300}
-                      className="rounded-xl md:rounded-2xl object-cover h-auto w-auto max-w-[280px] md:max-w-[400px]"
-                    />
-                  </div>
-                ))}
-              </Marquee>
-              </div>
           </div>
         </div>
       </section>
@@ -638,25 +811,6 @@ export default function Home() {
               QUERO ACESSAR A PLATAFORMA
             </a>
           </div> */}
-        </div>
-      </section>
-
-      {/* Meet the Guide Section */}
-      <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-xl font-bold text-gray-900 text-center mb-0">
-            Quem vai te guiar nessa jornada?
-          </h2>
-          <p className="text-xl md:text-3xl lg:text-4xl font-bold text-[#FF7167] mb-6 md:mb-12">Conheça a Dra. Angela Virgolim</p>
-
-          <div className="max-w-4xl mx-auto px-4">
-            <HeroVideoDialog
-              videoSrc="https://player.vimeo.com/video/1135528791?autoplay=1"
-              thumbnailSrc="/thumb.jpg"
-              thumbnailAlt="Apresentação da Dra. Angela Virgolim"
-              animationStyle="from-center"
-            />
-          </div>
         </div>
       </section>
 
