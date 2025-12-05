@@ -257,67 +257,35 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-[#f7f1f2] overflow-x-hidden">
       {/* Hero Section */}
-      <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col overflow-hidden">
-        {/* Background - Mobile */}
-        <div className="absolute inset-0 z-0 md:hidden">
-          <Image
-            src="/mobile.jpg"
-            alt="Background"
-            fill
-            className="object-cover object-top mr-20 md:mr-0"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/70"></div>
-        </div>
-        
-        {/* Background - Desktop */}
-        <div className="hidden md:block absolute inset-0 z-0">
-          <Image
-            src="/imagehero.png"
-            alt="Background"
-            fill
-            className="object-cover"
-            priority
-          />
-          <div className="absolute inset-0 bg-black/30"></div>
-        </div>
-        
+      <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col overflow-hidden bg-[#f7f1f2]">
         {/* Main Content */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-4 md:px-6 lg:px-8 flex-1 flex items-center py-12 md:py-16 lg:py-20">
-          <div className="w-full">
-            {/* Content Container */}
-            <div className="text-left space-y-6 md:space-y-8 max-w-3xl">
-              {/* Logo */}
-              <div>
-                <Image
-                  src="/logo.png"
-                  alt="Aldeia Singular"
-                  width={200}
-                  height={60}
-                  priority
-                  className="h-auto w-40 md:w-48 lg:w-56"
-                />
-              </div>
-              
-              {/* Heading */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight">
-                A jornada com um filho <span className="text-[#FF7167]">AHSD</span> não precisa ser solitária.
-              </h1>
-              
-              {/* Subtitle */}
-              <p className="text-base md:text-lg lg:text-xl text-white/90 leading-relaxed">
-                A Aldeia Singular é uma comunidade que <span className="bg-gradient-to-r from-[#FF7167] to-[#FF9A8B] bg-clip-text text-transparent font-semibold">acolhe e fortalece mães e pais de crianças e adolescentes com Altas Habilidades e Superdotação</span>, identificados ou em processo de identificação. Criada e guiada pela Dra. Angela Virgolim, <span className="font-bold italic">é um espaço de pertencimento, aprendizado e transformação.</span>
-              </p>
-              
-              {/* CTA Button */}
-              {/* <div className="pt-2 flex justify-start">
-                <a 
-                  href="#precos" 
-                  className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors shadow-lg border-2 border-white inline-block"
-                >
-                  QUERO FAZER PARTE DA COMUNIDADE
-                </a>
-              </div> */}
+        <div className="relative z-20 max-w-4xl mx-auto px-4 flex-1 flex items-center py-12 md:py-16 lg:py-20">
+          <div className="w-full text-left space-y-6 md:space-y-8">
+            {/* Logo */}
+            <div className="flex justify-center">
+              <Image
+                src="/amarela.png"
+                alt="Aldeia Singular"
+                width={200}
+                height={60}
+                priority
+                className="h-auto w-40 md:w-48 lg:w-56"
+              />
+            </div>
+            
+            {/* Heading */}
+            <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-900 leading-tight text-center">
+              A jornada com um filho <span className="text-[#FDAF28]">AHSD</span> não precisa ser solitária.
+            </h1>
+            
+            {/* Video */}
+            <div className="relative rounded-2xl overflow-visible aspect-video bg-transparent w-full">
+              <HeroVideoDialog
+                videoSrc="https://player.vimeo.com/video/1135528791?autoplay=1"
+                thumbnailSrc="/thumb.jpg"
+                thumbnailAlt="Apresentação da Dra. Angela Virgolim"
+                animationStyle="from-center"
+              />
             </div>
           </div>
         </div>
@@ -519,11 +487,12 @@ export default function Home() {
         </div>
 
         {/* Plataforma Autoral Exclusiva - Full Width Orange Section */}
-        <div className="w-screen bg-[#FF7167] relative overflow-visible pt-12 md:pt-20 lg:pt-10 pb-16 md:pb-24 lg:pb-20 -mx-4 md:mx-0">
-          <div className="max-w-7xl mx-auto px-4">
+        <div className="w-screen bg-gradient-to-br from-[#FF7167] via-[#FF8A7A] to-[#FF9A8B] relative overflow-visible pt-12 md:pt-20 lg:pt-10 pb-16 md:pb-24 lg:pb-20 -mx-4 md:mx-0">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-50"></div>
+          <div className="relative z-10 max-w-7xl mx-auto px-4">
             <div className="flex justify-center items-center">
               {/* Video */}
-              <div className="relative rounded-2xl overflow-visible aspect-video bg-transparent w-full max-w-4xl">
+              <div className="relative rounded-2xl overflow-visible aspect-video bg-transparent w-full max-w-4xl shadow-2xl ring-4 ring-white/20">
                 <HeroVideoDialog
                   videoSrc="https://player.vimeo.com/video/1139764781?autoplay=1"
                   thumbnailSrc="/mockup.png"
@@ -638,25 +607,6 @@ export default function Home() {
               QUERO ACESSAR A PLATAFORMA
             </a>
           </div> */}
-        </div>
-      </section>
-
-      {/* Meet the Guide Section */}
-      <section className="py-12 md:py-20 px-4 bg-[#f7f1f2]">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-xl font-bold text-gray-900 text-center mb-0">
-            Quem vai te guiar nessa jornada?
-          </h2>
-          <p className="text-xl md:text-3xl lg:text-4xl font-bold text-[#FF7167] mb-6 md:mb-12">Conheça a Dra. Angela Virgolim</p>
-
-          <div className="max-w-4xl mx-auto px-4">
-            <HeroVideoDialog
-              videoSrc="https://player.vimeo.com/video/1135528791?autoplay=1"
-              thumbnailSrc="/thumb.jpg"
-              thumbnailAlt="Apresentação da Dra. Angela Virgolim"
-              animationStyle="from-center"
-            />
-          </div>
         </div>
       </section>
 

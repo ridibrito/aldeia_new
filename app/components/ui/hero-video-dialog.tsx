@@ -94,9 +94,9 @@ export function HeroVideoDialog({
           className="w-full rounded-md shadow-lg transition-all duration-200 ease-out group-hover:brightness-[0.8]"
         />
         <div className="absolute inset-0 flex scale-[0.9] items-center justify-center rounded-2xl transition-all duration-200 ease-out group-hover:scale-100">
-          <div className="bg-[#FF7167]/20 flex size-28 items-center justify-center rounded-full backdrop-blur-md border border-white/30">
+          <div className="bg-red-500/20 flex size-28 items-center justify-center rounded-full backdrop-blur-md border border-white/30">
             <div
-              className={`from-[#FF7167]/40 to-[#FF7167]/60 relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2] backdrop-blur-sm`}
+              className={`from-red-500/60 to-red-600/80 relative flex size-20 scale-100 items-center justify-center rounded-full bg-gradient-to-b shadow-md transition-all duration-200 ease-out group-hover:scale-[1.2] backdrop-blur-sm`}
             >
               <Play
                 className="size-8 scale-100 fill-white text-white transition-transform duration-200 ease-out group-hover:scale-105"
