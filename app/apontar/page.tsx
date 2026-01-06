@@ -428,11 +428,6 @@ export default function Apontar() {
               </div>
             </div>
             
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
-            </div>
-            
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -461,11 +456,6 @@ export default function Apontar() {
                   Angustiada com a intensidade emocional dele e sem saber como acalmar?
                 </p>
               </div>
-            </div>
-            
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
             </div>
             
             {/* A Solução */}
@@ -498,11 +488,6 @@ export default function Apontar() {
               </div>
             </div>
             
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
-            </div>
-            
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -531,11 +516,6 @@ export default function Apontar() {
                   Perdida no excesso de informações duvidosas da internet?
                 </p>
               </div>
-            </div>
-            
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
             </div>
             
             {/* A Solução */}

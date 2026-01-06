@@ -6,6 +6,7 @@ import { Marquee } from "./components/marquee";
 import { ShimmerButton } from "./components/ui/shimmer-button";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 function FAQSection() {
   const [showMore, setShowMore] = useState(false);
@@ -145,10 +146,10 @@ function FAQSection() {
                   className="w-full flex items-center justify-between gap-4 text-left"
                 >
                   <p className="text-base md:text-lg font-semibold text-gray-900">{item.question}</p>
-                  <svg 
+                  <svg
                     className={`w-5 h-5 md:w-6 md:h-6 text-[#FF7167] flex-shrink-0 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
-                    fill="none" 
-                    stroke="currentColor" 
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -188,10 +189,10 @@ function FAQSection() {
                     className="w-full flex items-center justify-between gap-4 text-left"
                   >
                     <p className="text-base md:text-lg font-semibold text-gray-900">{item.question}</p>
-                    <svg 
+                    <svg
                       className={`w-5 h-5 md:w-6 md:h-6 text-[#FF7167] flex-shrink-0 transition-transform ${openIndex === globalIndex ? 'rotate-180' : ''}`}
-                      fill="none" 
-                      stroke="currentColor" 
+                      fill="none"
+                      stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -243,7 +244,7 @@ export default function Home() {
       setCurrentTestimonial((prev) => (prev === 0 ? depoimentosTextos.length - 1 : prev - 1));
     }
   };
-  
+
   // Depoimentos reais com textos do depoimentos.md - Todos os 10
   const depoimentosTextos = [
     {
@@ -368,14 +369,14 @@ export default function Home() {
                   className="h-auto w-40 md:w-48 lg:w-56"
                 />
               </div>
-              
+
               {/* Heading */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 <span className="text-[#FFAF24]">
                   A jornada com um filho <span className="text-[#FF7167] underline decoration-[#FF7167] decoration-2 underline-offset-4">AHSD</span> não precisa ser solitária.
                 </span>
               </h1>
-              
+
               {/* Subtítulo */}
               <div className="flex justify-center">
                 <ShimmerButton
@@ -386,7 +387,7 @@ export default function Home() {
                   Assista ao vídeo antes de seguir
                 </ShimmerButton>
               </div>
-              
+
               {/* Video da Dra. Angela */}
               <div className="w-full max-w-4xl mx-auto">
                 <HeroVideoDialog
@@ -409,12 +410,12 @@ export default function Home() {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight">
               Para que seu filho possa brilhar, <span className="text-[#FF7167]">você precisa estar forte.</span>
             </h2>
-            
+
             {/* Texto de Apoio */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed" style={{ lineHeight: '1.6' }}>
               A jornada com Altas Habilidades é desafiadora. Identificar os sinais é apenas o começo; a verdadeira batalha acontece no dia a dia, quando a teoria encontra a realidade.
             </p>
-            
+
             {/* Gancho Final */}
             <p className="text-lg md:text-xl text-gray-900 font-bold italic">
               Se você se identifica com as situações abaixo, a Aldeia foi feita para você:
@@ -426,7 +427,7 @@ export default function Home() {
       {/* DOBRA 3: O "Sanduíche de Solução" */}
       <section className="py-12 md:py-20 px-6 bg-[#f7f1f2]">
         <div className="max-w-2xl mx-auto space-y-8">
-          
+
           {/* Par 1: Escola */}
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             {/* A Dor */}
@@ -440,12 +441,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
-            </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -475,12 +471,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
-            </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -510,12 +501,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
-            </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -545,12 +531,7 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            
-            {/* Seta de Transição */}
-            <div className="flex justify-center bg-white py-2">
-              <div className="text-3xl text-[#FF7167]">⬇</div>
-            </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -579,7 +560,7 @@ export default function Home() {
           </h2>
 
           {/* Carrossel Container */}
-          <div 
+          <div
             className="relative"
             onTouchStart={onTouchStart}
             onTouchMove={onTouchMove}
@@ -609,7 +590,7 @@ export default function Home() {
 
                 {/* Conteúdo do depoimento */}
                 <div className="relative pt-16 md:pt-20 flex-1 flex flex-col justify-between">
-                  <motion.p 
+                  <motion.p
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.1 }}
@@ -617,9 +598,9 @@ export default function Home() {
                   >
                     "{depoimentosTextos[currentTestimonial].texto}"
                   </motion.p>
-                  
+
                   {/* Autor */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.2 }}
@@ -850,10 +831,10 @@ export default function Home() {
                   Acolher é o primeiro passo para transformar
                 </h3>
                 <div className="flex justify-center mb-4 md:mb-6">
-                  <Image 
-                    src="/sublinhado.png" 
-                    alt="" 
-                    width={500} 
+                  <Image
+                    src="/sublinhado.png"
+                    alt=""
+                    width={500}
                     height={8}
                     className="h-auto w-full max-w-[300px] md:max-w-[500px]"
                     style={{ filter: 'brightness(0) saturate(100%) invert(15%) sepia(90%) saturate(3000%) hue-rotate(260deg) brightness(0.6) contrast(1.2)' }}
@@ -911,7 +892,7 @@ export default function Home() {
                   <p className="text-base md:text-lg lg:text-xl text-[#450655]">ou R$ 947,58 à vista</p>
                 </div>
                 <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors w-full max-w-md shadow-lg border-2 border-white inline-block text-center whitespace-nowrap">
-                 ENTRAR PARA A ALDEIA SINGULAR
+                  ENTRAR PARA A ALDEIA SINGULAR
                 </a>
                 <div className="mt-4 md:mt-6 flex flex-col items-center">
                   <Image
@@ -960,14 +941,14 @@ export default function Home() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-4 md:mb-6 flex justify-center">
             <Image
-                  src="/amarela.png"
-                  alt="Aldeia Singular"
-                  width={180}
-                  height={54}
+              src="/amarela.png"
+              alt="Aldeia Singular"
+              width={180}
+              height={54}
               className="h-auto w-32 md:w-40 lg:w-48"
-                />
-              </div>
-          
+            />
+          </div>
+
           {/* WhatsApp Button and CTA */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6 md:mb-8">
             <a
@@ -983,7 +964,7 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
               </svg>
               <span>Fale conosco</span>
             </a>
@@ -997,10 +978,17 @@ export default function Home() {
             </a>
           </div>
 
+          <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-6 text-sm text-white/60">
+            <Link href="/politicas#privacidade" className="hover:text-white transition-colors">Política de Privacidade</Link>
+            <Link href="/politicas#termos" className="hover:text-white transition-colors">Termos de Uso</Link>
+            <Link href="/politicas#reembolso" className="hover:text-white transition-colors">Política de Reembolso</Link>
+            <Link href="/politicas#cookies" className="hover:text-white transition-colors">Política de Cookies</Link>
+          </div>
+
           <p className="text-white/80 mb-6 md:mb-8 text-sm md:text-base">
-                © 2025 Aldeia Singular. Todos os direitos reservados.
-              </p>
-          
+            © 2026 Aldeia Singular. Todos os direitos reservados.
+          </p>
+
           {/* Subrodapé */}
           <div className="border-t border-white/20 pt-6 md:pt-8 space-y-3 md:space-y-4">
             <p className="text-white/80 text-xs md:text-sm max-w-3xl mx-auto px-4">
