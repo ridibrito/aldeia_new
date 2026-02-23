@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 "use client"
 
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { Play, XIcon } from "lucide-react"
 import { AnimatePresence, motion } from "framer-motion"
 
@@ -20,6 +20,7 @@ type AnimationStyle =
 interface HeroVideoProps {
   animationStyle?: AnimationStyle
   videoSrc: string
+  embedHtml?: string
   thumbnailSrc: string
   thumbnailAlt?: string
   className?: string
@@ -71,12 +72,46 @@ const animationVariants = {
 export function HeroVideoDialog({
   animationStyle = "from-center",
   videoSrc,
+  embedHtml,
   thumbnailSrc,
   thumbnailAlt = "Video thumbnail",
   className,
 }: HeroVideoProps) {
   const [isVideoOpen, setIsVideoOpen] = useState(false)
   const selectedAnimation = animationVariants[animationStyle]
+  const embedContainerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!isVideoOpen || !embedHtml || !embedContainerRef.current) {
+      return
+    }
+
+    const container = embedContainerRef.current
+    container.innerHTML = ""
+
+    const temp = document.createElement("div")
+    temp.innerHTML = embedHtml
+
+    Array.from(temp.childNodes).forEach((node) => {
+      if (node.nodeName.toLowerCase() !== "script") {
+        container.appendChild(node.cloneNode(true))
+        return
+      }
+
+      const script = document.createElement("script")
+      const originalScript = node as HTMLScriptElement
+
+      Array.from(originalScript.attributes).forEach((attr) => {
+        script.setAttribute(attr.name, attr.value)
+      })
+      script.text = originalScript.text
+      container.appendChild(script)
+    })
+
+    return () => {
+      container.innerHTML = ""
+    }
+  }, [embedHtml, isVideoOpen])
 
   return (
     <div className={cn("relative", className)}>
@@ -140,13 +175,20 @@ export function HeroVideoDialog({
                 <XIcon className="size-5" />
               </motion.button>
               <div className="relative isolate z-[1] size-full overflow-hidden rounded-2xl border-2 border-white">
-                <iframe
-                  src={videoSrc}
-                  title="Hero Video player"
-                  className="size-full rounded-2xl"
-                  allowFullScreen
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                ></iframe>
+                {embedHtml ? (
+                  <div
+                    ref={embedContainerRef}
+                    className="size-full rounded-2xl"
+                  />
+                ) : (
+                  <iframe
+                    src={videoSrc}
+                    title="Hero Video player"
+                    className="size-full rounded-2xl"
+                    allowFullScreen
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  ></iframe>
+                )}
               </div>
             </motion.div>
           </motion.div>

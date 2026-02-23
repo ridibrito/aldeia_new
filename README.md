@@ -37,3 +37,15 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/bui
 # aldeia_new
 
 Dummy change
+
+## Vturb no Hero
+
+Para usar o player do Vturb no Hero, configure a variavel publica:
+
+```bash
+NEXT_PUBLIC_VTURB_HERO_EMBED='<div>COLE_AQUI_O_EMBED_HTML_COMPLETO_DO_VTURB</div>'
+```
+
+Observacoes:
+- Cole o snippet HTML completo do Vturb em uma unica linha (incluindo `<script>`).
+- Sem essa variavel, o Hero continua com fallback para Vimeo.
