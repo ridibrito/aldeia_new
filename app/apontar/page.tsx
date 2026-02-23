@@ -378,6 +378,7 @@ export default function Apontar() {
               <div className="w-full max-w-4xl mx-auto">
                 <HeroVideoDialog
                   videoSrc="https://player.vimeo.com/video/1135528791?autoplay=1"
+                  embedHtml={process.env.NEXT_PUBLIC_VTURB_HERO_EMBED}
                   thumbnailSrc="/thumb.jpg"
                   thumbnailAlt="Apresentação da Dra. Angela Virgolim"
                   animationStyle="from-center"

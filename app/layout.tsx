@@ -22,6 +22,31 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="scroll-smooth">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "!function(i,n){i._plt=i._plt||(n&&n.timeOrigin?n.timeOrigin+n.now():Date.now())}(window,performance);",
+          }}
+        />
+        <link
+          rel="preload"
+          href="https://scripts.converteai.net/37b8fe12-9837-408e-961a-4419607ff911/players/699c297c7016a923ccd01b46/v4/player.js"
+          as="script"
+        />
+        <link
+          rel="preload"
+          href="https://scripts.converteai.net/lib/js/smartplayer-wc/v4/smartplayer.js"
+          as="script"
+        />
+        <link
+          rel="preload"
+          href="https://cdn.converteai.net/37b8fe12-9837-408e-961a-4419607ff911/699c291e7d7b375b25f221cd/main.m3u8"
+          as="fetch"
+        />
+        <link rel="dns-prefetch" href="https://cdn.converteai.net" />
+        <link rel="dns-prefetch" href="https://scripts.converteai.net" />
+        <link rel="dns-prefetch" href="https://images.converteai.net" />
+        <link rel="dns-prefetch" href="https://api.vturb.com.br" />
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
