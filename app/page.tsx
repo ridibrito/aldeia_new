@@ -4,7 +4,7 @@ import Image from "next/image";
 import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
 import { Marquee } from "./components/marquee";
 import { ShimmerButton } from "./components/ui/shimmer-button";
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 
@@ -216,13 +216,9 @@ function FAQSection() {
 const VTURB_PLAYER_ID = "699c297c7016a923ccd01b46";
 const VTURB_PLAYER_SCRIPT_SRC =
   "https://scripts.converteai.net/37b8fe12-9837-408e-961a-4419607ff911/players/699c297c7016a923ccd01b46/v4/player.js";
-const OFFER_RELEASE_SECONDS = 11 * 60 + 45;
-const OFFER_RELEASE_KEY = "aldeia_offer_released";
-const OFFER_START_AT_KEY = "aldeia_offer_started_at";
 
-function HeroVturbPlayer({ onRelease }: { onRelease: () => void }) {
+function HeroVturbPlayer() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [hasBoundTimeupdate, setHasBoundTimeupdate] = useState(false);
 
   useEffect(() => {
     if (!containerRef.current) return;
@@ -250,74 +246,57 @@ function HeroVturbPlayer({ onRelease }: { onRelease: () => void }) {
     };
   }, []);
 
-  useEffect(() => {
-    const tryRelease = () => {
-      localStorage.setItem(OFFER_RELEASE_KEY, "true");
-      onRelease();
-    };
-
-    const bindVideoProgress = () => {
-      const container = containerRef.current;
-      if (!container) return;
-
-      const host = container.querySelector("vturb-smartplayer") as
-        | (HTMLElement & { shadowRoot?: ShadowRoot | null })
-        | null;
-      if (!host) return;
-
-      const video =
-        (host.shadowRoot?.querySelector("video") as HTMLVideoElement | null) ??
-        (host.querySelector("video") as HTMLVideoElement | null);
-
-      if (!video || hasBoundTimeupdate) return;
-
-      const onTimeUpdate = () => {
-        if (video.currentTime >= OFFER_RELEASE_SECONDS) {
-          tryRelease();
-        }
-      };
-
-      video.addEventListener("timeupdate", onTimeUpdate);
-      setHasBoundTimeupdate(true);
-    };
-
-    const interval = window.setInterval(() => {
-      bindVideoProgress();
-
-      const startedAt = Number(localStorage.getItem(OFFER_START_AT_KEY));
-      if (startedAt && Date.now() - startedAt >= OFFER_RELEASE_SECONDS * 1000) {
-        tryRelease();
-      }
-    }, 1000);
-
-    return () => window.clearInterval(interval);
-  }, [hasBoundTimeupdate, onRelease]);
-
-  return (
-    <div
-      ref={containerRef}
-      onClick={() => {
-        if (!localStorage.getItem(OFFER_START_AT_KEY)) {
-          localStorage.setItem(OFFER_START_AT_KEY, String(Date.now()));
-        }
-      }}
-      className="w-full max-w-4xl mx-auto"
-    />
-  );
+  return <div ref={containerRef} className="w-full max-w-4xl mx-auto" />;
 }
 
 export default function Home() {
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [isOfferReleased, setIsOfferReleased] = useState<boolean>(() => {
-    if (typeof window === "undefined") return false;
-    return localStorage.getItem(OFFER_RELEASE_KEY) === "true";
-  });
-  const handleOfferRelease = useCallback(() => {
-    setIsOfferReleased(true);
-  }, []);
+  const [isVisible, setIsVisible] = useState(false);
   const depoimentos = Array.from({ length: 10 }, (_, i) => i + 1);
+
+  useEffect(() => {
+    const SECONDS_TO_DISPLAY = 11 * 60 + 45;
+    let attempts = 0;
+    let elsDisplayed = false;
+    const alreadyDisplayedKey = `alreadyElsDisplayed${SECONDS_TO_DISPLAY}`;
+    const alreadyElsDisplayed = localStorage.getItem(alreadyDisplayedKey);
+
+    const showHiddenElements = function () {
+      elsDisplayed = true;
+      setIsVisible(true);
+      localStorage.setItem(alreadyDisplayedKey, "true");
+    };
+
+    const startWatchVideoProgress = function () {
+      const player = (window as unknown as { smartplayer?: { instances?: any[] } })
+        .smartplayer;
+      if (!player || !(player.instances && player.instances.length)) {
+        if (attempts >= 10) return;
+        attempts += 1;
+        window.setTimeout(() => {
+          startWatchVideoProgress();
+        }, 1000);
+        return;
+      }
+
+      player.instances[0].on("timeupdate", () => {
+        const instance = player.instances?.[0];
+        if (!instance || elsDisplayed || instance.smartAutoPlay) return;
+        if ((instance.video?.currentTime ?? 0) < SECONDS_TO_DISPLAY) return;
+        showHiddenElements();
+      });
+    };
+
+    if (alreadyElsDisplayed === "true") {
+      window.setTimeout(() => {
+        showHiddenElements();
+      }, 100);
+    } else {
+      startWatchVideoProgress();
+    }
+  }, []);
 
   // Suporte para swipe em mobile
   const minSwipeDistance = 50;
@@ -490,14 +469,14 @@ export default function Home() {
 
               {/* Video da Dra. Angela */}
               <div className="w-full max-w-4xl mx-auto">
-                <HeroVturbPlayer onRelease={handleOfferRelease} />
+                <HeroVturbPlayer />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {isOfferReleased && (
+      {isVisible && (
       <>
       {/* DOBRA 2: A Ponte Emocional */}
       <section className="py-12 md:py-20 px-6 bg-white">
@@ -1048,8 +1027,8 @@ export default function Home() {
             />
           </div>
 
-          {isOfferReleased && (
-            <>
+          {isVisible && (
+          <>
               {/* WhatsApp Button and CTA */}
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6 md:mb-8">
                 <a
@@ -1085,7 +1064,7 @@ export default function Home() {
                 <Link href="/politicas#reembolso" className="hover:text-white transition-colors">Política de Reembolso</Link>
                 <Link href="/politicas#cookies" className="hover:text-white transition-colors">Política de Cookies</Link>
               </div>
-            </>
+          </>
           )}
 
           <p className="text-white/80 mb-6 md:mb-8 text-sm md:text-base">

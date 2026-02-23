@@ -124,3 +124,7 @@ body {
 .animate-spin-around {
   animation: spin-around 3s linear infinite;
 }
+
+.vturb-delay-content {
+  display: none;
+}
