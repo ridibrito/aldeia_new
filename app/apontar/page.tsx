@@ -322,22 +322,6 @@ export default function Apontar() {
 
   return (
     <div className="min-h-screen bg-[#f7f1f2] overflow-x-hidden">
-      {/* Top Bar */}
-      <div className="bg-white py-3 px-4">
-        <div className="flex items-center justify-center gap-3">
-          <p className="text-[#450655] text-sm md:text-base font-medium">
-            Uma parceria Aldeia Singular e Instituto Apontar
-          </p>
-          <Image
-            src="/icones/parceiro.png"
-            alt="Parceiro"
-            width={40}
-            height={40}
-            className="h-6 w-6 md:h-8 md:w-8 object-contain"
-          />
-        </div>
-      </div>
-      
       {/* Hero Section */}
       <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col overflow-hidden bg-[#f7f1f2]">
         {/* Main Content */}
