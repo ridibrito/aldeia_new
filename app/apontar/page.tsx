@@ -145,10 +145,10 @@ function FAQSection() {
                   className="w-full flex items-center justify-between gap-4 text-left"
                 >
                   <p className="text-base md:text-lg font-semibold text-gray-900">{item.question}</p>
-                  <svg 
+                  <svg
                     className={`w-5 h-5 md:w-6 md:h-6 text-[#FF7167] flex-shrink-0 transition-transform ${openIndex === index ? 'rotate-180' : ''}`}
-                    fill="none" 
-                    stroke="currentColor" 
+                    fill="none"
+                    stroke="currentColor"
                     viewBox="0 0 24 24"
                   >
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -188,10 +188,10 @@ function FAQSection() {
                     className="w-full flex items-center justify-between gap-4 text-left"
                   >
                     <p className="text-base md:text-lg font-semibold text-gray-900">{item.question}</p>
-                    <svg 
+                    <svg
                       className={`w-5 h-5 md:w-6 md:h-6 text-[#FF7167] flex-shrink-0 transition-transform ${openIndex === globalIndex ? 'rotate-180' : ''}`}
-                      fill="none" 
-                      stroke="currentColor" 
+                      fill="none"
+                      stroke="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -214,7 +214,7 @@ function FAQSection() {
 
 export default function Apontar() {
   const depoimentos = Array.from({ length: 10 }, (_, i) => i + 1);
-  
+
   // Depoimentos reais com textos do depoimentos.md - Todos os 10
   const depoimentosTextos = [
     {
@@ -322,22 +322,6 @@ export default function Apontar() {
 
   return (
     <div className="min-h-screen bg-[#f7f1f2] overflow-x-hidden">
-      {/* Top Bar */}
-      <div className="bg-white py-3 px-4">
-        <div className="flex items-center justify-center gap-3">
-          <p className="text-[#450655] text-sm md:text-base font-medium">
-            Uma parceria Aldeia Singular e Instituto Apontar
-          </p>
-          <Image
-            src="/icones/parceiro.png"
-            alt="Parceiro"
-            width={40}
-            height={40}
-            className="h-6 w-6 md:h-8 md:w-8 object-contain"
-          />
-        </div>
-      </div>
-      
       {/* Hero Section */}
       <section className="relative min-h-[80vh] md:min-h-[90vh] flex flex-col overflow-hidden bg-[#f7f1f2]">
         {/* Main Content */}
@@ -355,14 +339,14 @@ export default function Apontar() {
                   className="h-auto w-40 md:w-48 lg:w-56"
                 />
               </div>
-              
+
               {/* Heading */}
               <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
                 <span className="text-[#FFAF24]">
                   A jornada com um filho <span className="text-[#FF7167] underline decoration-[#FF7167] decoration-2 underline-offset-4">AHSD</span> não precisa ser solitária.
                 </span>
               </h1>
-              
+
               {/* Subtítulo */}
               <div className="flex justify-center mt-2 mb-4">
                 <ShimmerButton
@@ -373,7 +357,7 @@ export default function Apontar() {
                   Assista ao vídeo antes de seguir
                 </ShimmerButton>
               </div>
-              
+
               {/* Video da Dra. Angela */}
               <div className="w-full max-w-4xl mx-auto">
                 <HeroVideoDialog
@@ -397,12 +381,12 @@ export default function Apontar() {
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-extrabold text-gray-900 leading-tight">
               Para que seu filho possa brilhar, <span className="text-[#FF7167]">você precisa estar forte.</span>
             </h2>
-            
+
             {/* Texto de Apoio */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed" style={{ lineHeight: '1.6' }}>
               A jornada com Altas Habilidades é desafiadora. Identificar os sinais é apenas o começo; a verdadeira batalha acontece no dia a dia, quando a teoria encontra a realidade.
             </p>
-            
+
             {/* Gancho Final */}
             <p className="text-lg md:text-xl text-gray-900 font-bold italic">
               Se você se identifica com as situações abaixo, a Aldeia foi feita para você:
@@ -414,7 +398,7 @@ export default function Apontar() {
       {/* DOBRA 3: O "Sanduíche de Solução" */}
       <section className="py-12 md:py-20 px-6 bg-[#f7f1f2]">
         <div className="max-w-2xl mx-auto space-y-8">
-          
+
           {/* Par 1: Escola */}
           <div className="bg-white rounded-2xl shadow-lg overflow-hidden">
             {/* A Dor */}
@@ -428,7 +412,7 @@ export default function Apontar() {
                 </p>
               </div>
             </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -458,7 +442,7 @@ export default function Apontar() {
                 </p>
               </div>
             </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -488,7 +472,7 @@ export default function Apontar() {
                 </p>
               </div>
             </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -518,7 +502,7 @@ export default function Apontar() {
                 </p>
               </div>
             </div>
-            
+
             {/* A Solução */}
             <div className="bg-gradient-to-br from-green-50 to-green-100/50 border-l-4 border-green-500 p-6">
               <div className="flex items-start gap-4">
@@ -551,9 +535,8 @@ export default function Apontar() {
             {depoimentosTextos.map((depoimento, index) => (
               <div
                 key={index}
-                className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border-2 border-transparent transition-all duration-300 ease-out hover:border-[#FF7167] hover:shadow-2xl hover:shadow-[#FF7167]/20 hover:-translate-y-2 active:border-[#FF7167] active:shadow-2xl active:shadow-[#FF7167]/20 active:-translate-y-2 touch-manipulation cursor-pointer p-6 md:p-8 ${
-                  depoimento.destaque ? 'md:col-span-2 lg:col-span-1' : ''
-                }`}
+                className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br from-white to-gray-50 shadow-lg border-2 border-transparent transition-all duration-300 ease-out hover:border-[#FF7167] hover:shadow-2xl hover:shadow-[#FF7167]/20 hover:-translate-y-2 active:border-[#FF7167] active:shadow-2xl active:shadow-[#FF7167]/20 active:-translate-y-2 touch-manipulation cursor-pointer p-6 md:p-8 ${depoimento.destaque ? 'md:col-span-2 lg:col-span-1' : ''
+                  }`}
               >
                 {/* Ícone de aspas */}
                 <div className="absolute top-4 left-4 text-[#FF7167]/20 transition-all duration-300 group-hover:text-[#FF7167]/40 group-hover:scale-110 group-active:text-[#FF7167]/40 group-active:scale-110">
@@ -572,7 +555,7 @@ export default function Apontar() {
                   <p className="text-gray-800 text-base md:text-lg lg:text-xl leading-relaxed mb-6 font-medium">
                     "{depoimento.texto}"
                   </p>
-                  
+
                   {/* Autor */}
                   <div className="flex items-center gap-3 pt-4 border-t-2 border-[#FF7167]/20">
                     <div className="w-12 h-12 md:w-14 md:h-14 rounded-full overflow-hidden ring-2 ring-[#FF7167] flex-shrink-0">
@@ -720,10 +703,10 @@ export default function Apontar() {
                   Acolher é o primeiro passo para transformar
                 </h3>
                 <div className="flex justify-center mb-4 md:mb-6">
-                  <Image 
-                    src="/sublinhado.png" 
-                    alt="" 
-                    width={500} 
+                  <Image
+                    src="/sublinhado.png"
+                    alt=""
+                    width={500}
                     height={8}
                     className="h-auto w-full max-w-[300px] md:max-w-[500px]"
                     style={{ filter: 'brightness(0) saturate(100%) invert(15%) sepia(90%) saturate(3000%) hue-rotate(260deg) brightness(0.6) contrast(1.2)' }}
@@ -781,7 +764,7 @@ export default function Apontar() {
                   <p className="text-base md:text-lg lg:text-xl text-[#450655]">ou R$ 947,58 à vista</p>
                 </div>
                 <a href="https://pay.hotmart.com/L102866611N" target="_blank" rel="noopener noreferrer" className="bg-[#FF7167] hover:bg-[#FF5A4D] text-white font-bold py-3 px-4 md:py-4 md:px-8 rounded-full text-sm md:text-base lg:text-lg transition-colors w-full max-w-md shadow-lg border-2 border-white inline-block text-center whitespace-nowrap">
-                 ENTRAR PARA A ALDEIA SINGULAR
+                  ENTRAR PARA A ALDEIA SINGULAR
                 </a>
                 <div className="mt-4 md:mt-6 flex flex-col items-center">
                   <Image
@@ -830,14 +813,14 @@ export default function Apontar() {
         <div className="max-w-7xl mx-auto text-center">
           <div className="mb-4 md:mb-6 flex justify-center">
             <Image
-                  src="/amarela.png"
-                  alt="Aldeia Singular"
-                  width={180}
-                  height={54}
+              src="/amarela.png"
+              alt="Aldeia Singular"
+              width={180}
+              height={54}
               className="h-auto w-32 md:w-40 lg:w-48"
-                />
-              </div>
-          
+            />
+          </div>
+
           {/* WhatsApp Button and CTA */}
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-6 md:mb-8">
             <a
@@ -853,7 +836,7 @@ export default function Apontar() {
                 viewBox="0 0 24 24"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z" />
               </svg>
               <span>Fale conosco</span>
             </a>
@@ -868,9 +851,9 @@ export default function Apontar() {
           </div>
 
           <p className="text-white/80 mb-6 md:mb-8 text-sm md:text-base">
-                © 2024 Aldeia Singular. Todos os direitos reservados.
-              </p>
-          
+            © 2024 Aldeia Singular. Todos os direitos reservados.
+          </p>
+
           {/* Subrodapé */}
           <div className="border-t border-white/20 pt-6 md:pt-8 space-y-3 md:space-y-4">
             <p className="text-white/80 text-xs md:text-sm max-w-3xl mx-auto px-4">
