@@ -5,6 +5,7 @@ import { HeroVideoDialog } from "../components/ui/hero-video-dialog";
 import { Marquee } from "../components/marquee";
 import CardsCarousel from "../components/CardsCarousel";
 import { ShimmerButton } from "../components/ui/shimmer-button";
+import { FooterConversionTracking } from "../components/footer-conversion-tracking";
 import { useState } from "react";
 
 function FAQSection() {
@@ -865,6 +866,7 @@ export default function IV() {
             </p>
           </div>
         </div>
+        <FooterConversionTracking />
       </footer>
     </div>
   );

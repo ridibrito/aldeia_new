@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { FooterConversionTracking } from "../components/footer-conversion-tracking";
 
 export default function PoliticasPage() {
     const [activeTab, setActiveTab] = useState("privacidade");
@@ -316,6 +317,7 @@ export default function PoliticasPage() {
                     </div>
                     <p className="text-white/60 text-xs text-center">© 2026 Aldeia Singular. Todos os direitos reservados.</p>
                 </div>
+                <FooterConversionTracking />
             </footer>
 
             <style jsx global>{`

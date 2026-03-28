@@ -4,6 +4,7 @@ import Image from "next/image";
 import { HeroVideoDialog } from "./components/ui/hero-video-dialog";
 import { Marquee } from "./components/marquee";
 import { ShimmerButton } from "./components/ui/shimmer-button";
+import { FooterConversionTracking } from "./components/footer-conversion-tracking";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
@@ -1081,6 +1082,7 @@ export default function Home() {
             </p>
           </div>
         </div>
+        <FooterConversionTracking />
       </footer>
     </div>
   );
